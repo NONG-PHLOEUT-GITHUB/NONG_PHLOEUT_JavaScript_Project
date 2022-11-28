@@ -3,6 +3,7 @@
 
 body{
     @include body (100vh);
+    font-family: sans-serif;
     @include spacing(0,0);
 }
 
