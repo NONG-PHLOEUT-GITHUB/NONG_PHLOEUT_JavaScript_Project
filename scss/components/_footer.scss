@@ -39,3 +39,13 @@ footer {
         }
     }
 }
+
+.baner{
+    padding: 55px;
+    display: flex;
+    justify-content: flex-end;
+    background: rgb(216, 126, 126);
+    img{
+        border-radius: $border-radius;
+    }
+}
