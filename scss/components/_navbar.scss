@@ -14,7 +14,6 @@
         .logo {
             display: flex;
             @include flex-center(center, center);
-            // background: #000;
             margin-left: -10px;
         }
 
