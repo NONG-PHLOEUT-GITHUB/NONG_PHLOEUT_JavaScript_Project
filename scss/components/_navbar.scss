@@ -1,0 +1,57 @@
+@import"mixin";
+@import"input";
+@import"button";
+
+.nav-container {
+    flex: 0.3;
+    background: rgb(226, 218, 218);
+    #navigation {
+        // background: white;
+        display: flex;
+
+        .logo {
+            display: flex;
+            @include flex-center(center, center);
+            // background: #000;
+        }
+
+        menu {
+            display: flex;
+
+            ul,
+            li {
+                display: flex;
+                padding: 10px;
+            }
+        }
+
+    }
+    .seachBar {
+        padding: 20px;
+        display: flex;
+        // justify-content: space-between;
+        .search-container{
+            background-color: white;
+            @include flexProp(flex,row){
+                align-items: center;
+            }
+            width: 30%;
+            border-radius: $border-radius;
+            input{
+                @include flexSize(1);
+                border: none;
+                outline: none;
+                padding: 15px;
+            }
+            span{
+                @include button;
+                text-align: center;
+                justify-content: center;
+                margin-right: 10px;
+                color: white;
+            }
+            
+        }
+
+    }
+}
