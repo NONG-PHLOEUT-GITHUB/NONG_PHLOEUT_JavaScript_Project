@@ -1,0 +1,9 @@
+@import "components/navbar.scss";
+@import "components/mixin.scss";
+
+body{
+    @include body (100vh);
+    @include spacing(0,0);
+}
+
+
