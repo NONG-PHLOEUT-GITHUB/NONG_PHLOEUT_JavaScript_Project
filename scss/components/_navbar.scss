@@ -14,7 +14,8 @@
         .logo {
             display: flex;
             @include flex-center(center, center);
-            margin-left: -10px;
+            margin-left: -50px;
+            // background: #000;
         }
 
         .login {
@@ -34,7 +35,7 @@
             align-items: center;
         }
 
-        width: 30%;
+        width: 40%;
         border-radius: $border-radius;
 
         input {
@@ -50,6 +51,9 @@
             justify-content: center;
             margin-right: 10px;
             color: white;
+        }
+        .material-icons{
+            margin-left: 10px;
         }
 
     }

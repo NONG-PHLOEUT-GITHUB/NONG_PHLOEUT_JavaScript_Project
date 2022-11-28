@@ -3,11 +3,11 @@
   color: white;
   padding: 12px;
   border-radius: 10px;
-  width: 215%;
+  width: 200%;
   font-size: 16px;
   border: none;
   cursor: pointer;
-  margin-left: 80px;
+  margin-left: 40px;
 }
 
 .dropbtn:hover, .dropbtn:focus {
@@ -27,7 +27,7 @@
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  margin-left: 95px;
+  margin-left: 40px;
   width: 200%;
   border-radius: 10px;
 }
@@ -61,7 +61,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: -10px;
+  margin-left: -50px;
 }
 .nav-container #navigation .login {
   display: flex;
@@ -76,7 +76,7 @@
   display: flex;
   flex-direction: row;
   align-items: center;
-  width: 30%;
+  width: 40%;
   border-radius: 10px;
 }
 .nav-container .search-container input {
@@ -102,6 +102,9 @@
   color: white;
   text-decoration: none;
 }
+.nav-container .search-container .material-icons {
+  margin-left: 10px;
+}
 .nav-container .seachBar {
   padding: 20px;
   display: flex;
@@ -113,11 +116,11 @@
   color: white;
   padding: 12px;
   border-radius: 10px;
-  width: 215%;
+  width: 200%;
   font-size: 16px;
   border: none;
   cursor: pointer;
-  margin-left: 80px;
+  margin-left: 40px;
 }
 
 .dropbtn:hover, .dropbtn:focus {
@@ -137,7 +140,7 @@
   overflow: auto;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
-  margin-left: 95px;
+  margin-left: 40px;
   width: 200%;
   border-radius: 10px;
 }
@@ -159,6 +162,7 @@
 }
 
 .card-container {
+  padding: 50px;
   flex: 3;
   background: rgb(204, 114, 114);
   display: flex;
@@ -199,6 +203,35 @@
 .card-container .buyBtn #buyBtn a {
   color: white;
   text-decoration: none;
+}
+
+footer {
+  display: flex;
+  flex-direction: row;
+  background: white;
+  padding: 30px;
+}
+footer .contact-media {
+  display: flex;
+  flex-direction: row;
+  flex: 1;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 20px;
+}
+footer .contact-media .fa-facebook, footer .contact-media .fa-youtube, footer .contact-media .fa-linkedin, footer .contact-media .fa-google, footer .contact-media .fa-twitter {
+  font-size: 30px;
+  text-decoration: none;
+  color: blue;
+}
+footer .contact-media .fa-twitter {
+  color: blue;
+}
+footer .contact-media .fa-google {
+  color: red;
+}
+footer .contact-media .fa-youtube {
+  color: red;
 }
 
 body {

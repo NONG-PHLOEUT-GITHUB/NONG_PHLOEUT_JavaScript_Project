@@ -1,22 +1,8 @@
 @import"mixin";
-.footer {
-    background: greenyellow;
+footer {   
     @include flexProp(flex, row) {
         background: white;
-        .footer-logo {
-            @include flexProp(flex, row) {
-                flex: 1;
-                align-items: center;
-                padding: 20px;
-
-                img {
-                    margin-right: 10px;
-                }
-            }
-
-
-        }
-
+        padding: 30px;
     }
 
     .contact-media {
