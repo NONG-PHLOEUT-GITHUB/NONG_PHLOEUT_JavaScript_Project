@@ -1,6 +1,7 @@
 @import"variables";
 @import"dropdown";
 @mixin button{
+    color: $text-color;
     padding: 10px;
     border: none;
     cursor: pointer;

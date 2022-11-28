@@ -1,8 +1,9 @@
 @import "components/navbar.scss";
 @import "components/mixin.scss";
+@import "components/card.scss";
 
 body{
-    @include body (100vh);
+    @include body (150vh);
     font-family: sans-serif;
     @include spacing(0,0);
 }
