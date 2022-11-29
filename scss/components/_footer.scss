@@ -2,20 +2,26 @@
 footer {   
     @include flexProp(flex, row) {
         background: white;
-        padding: 30px;
+        padding: 35px;
     }
-
-    .contact-media {
-        @include flexProp(flex, row) {
+    #text{
+        text-align: center;
+    }
+    .abuot{
+        text-align: center;
+    }
+    .contact-media  {
+        // background: rgb(182, 92, 92);
+        @include flexProp(flex, column) {
+            justify-content: center;
             flex: 1;
             align-items: center;
-            justify-content: flex-end;
             gap: 20px;
-
             .fa-facebook {
                 font-size: 30px;
                 text-decoration: none;
                 color: blue;
+                margin: 20px;
             }
 
             .fa-twitter {
@@ -41,11 +47,13 @@ footer {
 }
 
 .baner{
-    padding: 55px;
     display: flex;
     justify-content: flex-end;
-    background: rgb(216, 126, 126);
+    background: rgb(120, 199, 230);
+    // background: #000;
     img{
+        margin-top: 10px;
+        margin-right: 60px;
         border-radius: $border-radius;
     }
 }
