@@ -6,6 +6,8 @@ table{
     box-shadow: 0px 0px 17px 0px black;
     font-family: sans-serif;
     text-align: center;
+    background: white;
+    margin-top: 30px;
 }
 #tr-container ,#img ,#name ,#price ,#edit{
     border: solid 1px;
@@ -22,11 +24,25 @@ tbody td{
 }
 .add{
     display: flex;
-    justify-content: flex-end
+    justify-content: center;
+    // background: #000;
+    width: 20%;
+    #add-product{
+        @include button;
+        width: 45%;
+        padding: 16px;
+       
+    }
 }
-#add-product{
-    @include button;
+#img{
     width: 10%;
-    margin-right: 70px;
-    padding: 16px;
+    img{
+        width: 200px;
+    }
+}
+#manage {
+    h1{
+        text-transform: uppercase;
+        font-size: 30px;
+    }
 }

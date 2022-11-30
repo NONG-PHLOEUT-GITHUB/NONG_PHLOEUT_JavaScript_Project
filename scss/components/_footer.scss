@@ -1,7 +1,8 @@
 @import"mixin";
 footer {   
+    border: solid 1px rgb(221, 205, 205);
     @include flexProp(flex, row) {
-        background: white;
+        background:$footerBg;
         padding: 35px;
     }
     #text{
@@ -46,14 +47,3 @@ footer {
     }
 }
 
-.baner{
-    display: flex;
-    justify-content: flex-end;
-    background: rgb(120, 199, 230);
-    // background: #000;
-    img{
-        margin-top: 10px;
-        margin-right: 60px;
-        border-radius: $border-radius;
-    }
-}

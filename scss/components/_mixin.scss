@@ -25,7 +25,7 @@ $breakPoints: (
     height: $h;
     display: flex;
     flex-direction: column;
-    background-color: $body_background;
+    background-color:$bg;
     @content;
 }
 @mixin flex-center($jc,$ac) {

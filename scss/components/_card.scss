@@ -1,18 +1,21 @@
 @import"mixin";
 @import"button";
+@import"variables";
 .card-container{
     padding: 50px;
     flex: 3;
-    background: rgb(120, 199, 230);
+    background: $bg;
     display: flex;
+    flex-wrap: wrap;
     // flex-direction: column;
     .card-product{
         box-sizing: border-box;
         padding: 30px;
-        height: 65vh;
+        // height: 65vh;
         background:white;
         margin: 10px;
-        width: 30%;
+        margin-left: 13px;
+        width: 23%;
         border-radius: $border-radius;
         box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
         .card-img{
@@ -22,6 +25,10 @@
             box-sizing: border-box;
             padding: 10px;
             // background: #000;
+            img{
+                width: 85%;
+                height: 120px;
+            }
         }
         p{
             font-size: 20px;
