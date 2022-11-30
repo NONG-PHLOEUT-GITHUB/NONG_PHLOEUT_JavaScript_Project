@@ -1,0 +1,11 @@
+@import "components/mixin.scss";
+@import "components/table.scss";
+@import "components/form.scss";
+@import "components/navbar.scss";
+
+body{
+    @include body (100vh);
+    font-family: sans-serif;
+    @include spacing(0,0);
+    background:$bg;
+}
