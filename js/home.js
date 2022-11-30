@@ -36,14 +36,13 @@ function loadProduct() {
   let productStorage = JSON.parse(localStorage.getItem("products"));
   if (productStorage !== null) {
     listOfProducts = productStorage;
-
     // console.log(listOfProducts)
   }
 }
   //=======================================get value of Product========================
   function createProduct() {
     loadProduct() // for despaly on sceen costomer
-    saveProduct() /// for save value form local storage
+    // saveProduct() /// for save value form local storage
     for(index = 0 ; index < listOfProducts.length ; index++){
       let listOfProduct = listOfProducts[index]; // get value form list of products
 
@@ -76,6 +75,7 @@ function loadProduct() {
       
       productRating =  document.createElement("div");
       productRating.classList.add("rating");
+      // productRating.textContent = "&#9734;"
       // productName.textContent = listOfProduct.describe;
 
       containsButton =  document.createElement("div");
@@ -98,6 +98,7 @@ function loadProduct() {
     }
    
   }
+
   //=======================================dropdown function========================
 
 function dropdowns() {
@@ -124,8 +125,8 @@ function dropdowns() {
 
 function searchProduct(){
   const textInput = searchProductInput.value.toUpperCase();
-  const baner = document.querySelector(".baner");
-  const productList = document.querySelectorAll(".card-product");
+  const baner = document.querySelector(".baner"); // get for hide
+  const productList = document.querySelectorAll(".card-product"); // get for hide
   const productName = document.getElementsByTagName("p");
   for(let i = 0 ;i< productName.length ; i++){
     let matches = productList[i].getElementsByTagName("p")[0]; //p index 0
