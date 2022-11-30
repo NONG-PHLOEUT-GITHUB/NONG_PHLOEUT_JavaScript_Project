@@ -20,7 +20,7 @@
             </div>
             <div class="search-container">
                 <i class="material-icons">search</i>
-                <input type="search" placeholder="Search">
+                <input type="search" id="searcProduct" placeholder="Search">
                 <span>Search</span>
             </div>
             <div class="login">
@@ -30,21 +30,27 @@
                 </ul>
             </div>
         </nav>
-        <div class="seachBar">
-            <div class="dropdown">
-                <button onclick="myFunction()" class="dropbtn">New Product</button>
-                <div id="myDropdown" class="dropdown-content">
-                  <a href="#home">Car</a>
-                  <a href="#about">Phone</a>
-                  <a href="#contact">Taptop</a>
-                </div>
+    </div>  
+    <div class="seachBar">
+        <div class="dropdown">
+            <button onclick="dropdowns()" class="dropbtn">New Product</button>
+            <div id="myDropdown" class="dropdown-content">
+                <a href="#home">MacBook</a>
+                <a href="#about">Dell</a>
+                <a href="#contact">HP</a>
+                <a href="#contact">Sumsung</a>
+                <a href="#contact">MSI</a>
             </div>
         </div>
+        <div class="baner">
+                <img src="images/baner2.png" alt="" width="80%">
+         </div>
     </div>
-
-    <!--  -->
+    
     <div class="card-container">
-        <div class="card-product">
+        
+        <!-- for apped product contaienr -->
+        <!-- <div class="card-product">
             <div class="card-img">
                 <img src="images/m2.jpg" alt="" width="200px">
             </div>
@@ -60,8 +66,36 @@
              <div class="buyBtn">
                 <button id="buyBtn">Buy now!</button>
              </div>
-        </div>
-        <div class="card-product">
+        </div> -->
+    </div>
+
+
+
+
+
+
+
+
+    
+    <!-- <div class="card-container"> -->
+        <!-- <div class="card-product">
+            <div class="card-img">
+                <img src="images/m2.jpg" alt="" width="200px">
+            </div>
+            <div class="product-name">
+                <p>Macbook Air M2</p>
+            </div>
+            <div class="product-price">
+               <p>$1199</p> 
+            </div>
+            <div class="rating">
+                rating
+             </div>
+             <div class="buyBtn">
+                <button id="buyBtn">Buy now!</button>
+             </div>
+        </div> -->
+        <!-- <div class="card-product" id="card-product">
             <div class="card-img">
                 <img src="images/m1.jpg" alt="" width="230px">
             </div>
@@ -77,8 +111,8 @@
              <div class="buyBtn">
                 <button id="buyBtn">Buy now!</button>
              </div>
-        </div>
-        <div class="card-product">
+        </div> -->
+        <!-- <div class="card-product">
             <div class="card-img">
                 <img src="images/msi14.jpg" alt="" width="200px">
             </div>
@@ -94,8 +128,8 @@
              <div class="buyBtn">
                 <button id="buyBtn">Buy now!</button>
              </div>
-        </div>
-        <div class="card-product">
+        </div> -->
+        <!-- <div class="card-product">
             <div class="card-img">
                 <img src="images/micro_.jpg" alt="" width="180px">
             </div>
@@ -111,9 +145,13 @@
              <div class="buyBtn">
                 <button id="buyBtn">Buy now!</button>
              </div>
-        </div>
-    </div>
-    <div class="card-container">
+        </div> -->
+    <!-- </div> -->
+
+
+<!-- container2 -->
+
+    <!-- <div class="card-container">
         <div class="card-product">
             <div class="card-img">
                 <img src="images/macbookpro14.webp" alt="" width="200px">
@@ -182,14 +220,28 @@
                 <button id="buyBtn">Buy now!</button>
              </div>
         </div>
-    </div>
+    </div> -->
     <footer>
+        <div class="customer-service">
+            <h3>Customer Service</h3>
+            <h4 id="text">Contact Us</h4>
+            <h4 id="text">Private Policy</h4>
+        </div>
         <div class="contact-media">
-            <i><a href="#" class="fa fa-facebook"></a></i>
-            <i><a href="#" class="fa fa-twitter"></a></i>
-            <i><a href="#" class="fa fa-google"></a></i>
-            <i><a href="#" class="fa fa-linkedin"></a></i>
-            <i><a href="#" class="fa fa-youtube"></a></i>
+            <div class="follow">
+                <h3>Follow  Us</h3>
+            </div>
+            <div class="media">
+                <i><a href="#" class="fa fa-facebook"></a></i>
+                <i><a href="#" class="fa fa-twitter"></a></i>
+                <i><a href="#" class="fa fa-google"></a></i>
+                <i><a href="#" class="fa fa-linkedin"></a></i>
+                <i><a href="#" class="fa fa-youtube"></a></i>
+            </div>
+        </div>
+        <div class="abuot">
+            <h3>About us</h3>
+            <h4 id="texts">About MARKET</h4>
         </div>
     </footer>
 </body> 
