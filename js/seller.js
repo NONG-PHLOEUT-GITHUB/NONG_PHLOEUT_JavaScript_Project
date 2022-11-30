@@ -20,12 +20,12 @@ let listOfProducts = [
 
 //=======================================fuction save in local stroage===================
 function saveProduct() {
-  localStorage.setItem("product", JSON.stringify(listOfProducts));
+  localStorage.setItem("products", JSON.stringify(listOfProducts));
 }
 
 //=======================================fuction get value form local storage=========================
 function loadProduct() {
-  let productStorage = JSON.parse(localStorage.getItem("product"));
+  let productStorage = JSON.parse(localStorage.getItem("products"));
   if (productStorage !== null) {
     listOfProducts = productStorage;
     console.log(listOfProducts)
@@ -53,7 +53,11 @@ function onEdit() {
 //=======================================create products======================
 
 function createProduct() {
-  loadProduct()
+ 
+  loadProduct() /// for don't display value form local storage
+  // reload the old product
+  // saveProduct()
+
   //remove table products
   let dom_products_container = document.querySelector("#body-table");
   dom_products_container.remove();
@@ -70,16 +74,19 @@ function createProduct() {
     //create  tr
     let tr = document.createElement("tr");
     tr.setAttribute("id", "tr-container");
+    tr.setAttribute("index", index);
     tr.dataset.index = index;
+    console.log(tr)
 
     //create td img
     let td = document.createElement("td");
     td.setAttribute("id", "img");
     let Proimg = document.createElement("img");
-    Proimg.src = listOfProduct.img
-    console.log(listOfProduct)
-    td.appendChild(Proimg)
-    console.log(td)
+    Proimg.src = listOfProduct.img;
+    // console.log(listOfProduct)
+    td.appendChild(Proimg);
+
+    // console.log(td)
  //create td name
     let tdName = document.createElement("td");
     tdName.setAttribute("id", "name");
@@ -112,7 +119,7 @@ function createProduct() {
     buttonRemove.textContent = "Remove"
     //addEventListener
     buttonRemove.addEventListener("click", removeProduct);
-    console.log(buttonRemove);
+    // console.log(buttonRemove);
 
     let buttonEdit = document.createElement("button");
     buttonEdit.setAttribute("id", "button-edit");
@@ -123,6 +130,7 @@ function createProduct() {
     td3.appendChild(buttonEdit);
     td3.appendChild(buttonRemove);
   }
+
 }
 //=======================================Add new product======================
 function onAddNewProduct() {
@@ -138,11 +146,11 @@ addButton.addEventListener("click", onAddNewProduct);
 function editProduct(event) {
   // buttonCreate.textContent = "Save";
   let index = event.target.parentElement.parentElement.dataset.index; // index of the question
-  console.log(index);
+  // console.log(index);
   document.getElementById("img-value").value = listOfProducts[index].img;
   document.getElementById("name-value").value = listOfProducts[index].name;
   document.getElementById("price-value").value = listOfProducts[index].price;
-  document.getElementById("describe-value").value = listOfProducts[index].price;
+  document.getElementById("describe-value").value = listOfProducts[index].describe;
 
 
   show(dom_product_dialog);
@@ -155,6 +163,7 @@ function editPr(index,valueOfimg,valueOfname,valueOfPrice){
   console.log("hello world")
   listOfProducts[index].img = valueOfimg;
   listOfProducts[index].name = valueOfname;
+  listOfProducts[index].describe = valueOfname;
   listOfProducts[index].price = valueOfPrice;
   hide(dom_product_dialog);
 }
@@ -163,22 +172,20 @@ function editPr(index,valueOfimg,valueOfname,valueOfPrice){
 function removeProduct(event){
 
   // alert("hello")
-
+  // .setAttribute("index")
     //  Get index
-    // let index = event.target.parentElement.parentElement.dataset.index;
-    // console.log(index)
+    let index = event.target.parentElement.parentElement.dataset.index;
+    console.log(index)
 
-    // Remove question
-    // listOfProducts.splice(index, 1);
+    // Remove product
+    listOfProducts.splice(index, 1);
   
     // Save to local storage
-    // saveQuestions();
+    saveProduct()
   
     // Update the view
-    // createProduct()
-    let tbody = document.querySelector("#tr-container");
-    console.log(tbody);
-    tbody.remove()
+    createProduct()
+
 }
 //=======================================Creat product======================
 
@@ -192,7 +199,7 @@ function onCreate() {
   createNew.name = document.getElementById("name-value").value;
   createNew.price = document.getElementById("price-value").value;
   createNew.describe = document.getElementById("describe-value").value;
-  console.log(createNew)
+  // console.log(createNew)
   listOfProducts.push(createNew);
   saveProduct(); //save Products on localStorage
   createProduct() // for get display newCreateProduct
@@ -217,3 +224,5 @@ buttonCreate.addEventListener("click", onCreate); // click add button on form ad
 //=======================================CALL FUCTION=======================
 
 createProduct()
+
+loadProduct()
