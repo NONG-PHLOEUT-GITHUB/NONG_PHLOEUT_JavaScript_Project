@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Costomer</title>
     <link rel="stylesheet" href="css/home.min.css">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -25,8 +25,9 @@
             </div>
             <div class="login">
                 <ul>
-                    <li>LOGIN</li>
-                    <li>REGISTER</li>
+                    <button id="btn-cart"><li>Cart</li><a href="pages/cart.html"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></button>
+                    <button id="btn-login"><li>LOGIN</li><i class="fa fa-sign-in" aria-hidden="true"></i></button>
+                    <button id="btn-register"><li>REGISTER</li><i><a href="#" class="fa fa-user-plus"></a></i></button>
                 </ul>
             </div>
         </nav>
@@ -42,13 +43,12 @@
                 <a href="#contact">MSI</a>
             </div>
         </div>
-        <div class="baner">
+        <!-- <div class="baner">
                 <img src="images/baner2.png" alt="" width="80%">
-         </div>
+         </div> -->
     </div>
     
     <div class="card-container">
-        
         <!-- for apped product contaienr -->
         <!-- <div class="card-product">
             <div class="card-img">
@@ -69,158 +69,39 @@
         </div> -->
     </div>
 
-
-
-
-
-
-
-
+    <!-- <!-tp up ->  -->
+    <div id="product-dialog" style="display: none">
+        <dialog open>
+          <section>
+            <h2 id="titleOfForm">REGISTER</h2>
+            <label for="" id="label-name1">First Name</label>
+            <input id="first-name" type="text" placeholder="Enter your first name" />
+            <label for="" id="label-name2">Last Name</label>
+            <input id="last-name" type="text" placeholder="Enter your last name" />
+            <label for="">Phone Number or Email*</label>
+            <input id="email" type="email" placeholder="Enter your email" />
+            <label for="">Password</label>
+            <input id="password" type="password" placeholder="Enter your password" />
+            <label for="" id="password-label">Remeber me</label>
+          </section>
+          <div class="media-register">
+            <p id="optionLogin">or sign up wiht</p>
+            <i><a href="#" class="fa fa-facebook"></a></i>
+            <i><a href="#" class="fa fa-google-plus"></a></i>
+          </div>
+          <menu>
+            <!-- When clicking on button,  call the right function  -->
+            <button>Cancel</button>
     
-    <!-- <div class="card-container"> -->
-        <!-- <div class="card-product">
-            <div class="card-img">
-                <img src="images/m2.jpg" alt="" width="200px">
-            </div>
-            <div class="product-name">
-                <p>Macbook Air M2</p>
-            </div>
-            <div class="product-price">
-               <p>$1199</p> 
-            </div>
-            <div class="rating">
-                rating
-             </div>
-             <div class="buyBtn">
-                <button id="buyBtn">Buy now!</button>
-             </div>
-        </div> -->
-        <!-- <div class="card-product" id="card-product">
-            <div class="card-img">
-                <img src="images/m1.jpg" alt="" width="230px">
-            </div>
-            <div class="product-name">
-                <p>Macbook Air M1</p>
-            </div>
-            <div class="product-price">
-                <p>$999</p> 
-             </div>
-             <div class="rating">
-                rating
-             </div>
-             <div class="buyBtn">
-                <button id="buyBtn">Buy now!</button>
-             </div>
-        </div> -->
-        <!-- <div class="card-product">
-            <div class="card-img">
-                <img src="images/msi14.jpg" alt="" width="200px">
-            </div>
-            <div class="product-name">
-                <p>MSI Modern 14</p>
-            </div>
-            <div class="product-price">
-                <p>$700</p> 
-             </div>
-             <div class="rating">
-                rating
-             </div>
-             <div class="buyBtn">
-                <button id="buyBtn">Buy now!</button>
-             </div>
-        </div> -->
-        <!-- <div class="card-product">
-            <div class="card-img">
-                <img src="images/micro_.jpg" alt="" width="180px">
-            </div>
-            <div class="product-name">
-                <p>Microsoft Surface</p>
-            </div>
-            <div class="product-price">
-                <p>$500</p> 
-             </div>
-             <div class="rating">
-                rating
-             </div>
-             <div class="buyBtn">
-                <button id="buyBtn">Buy now!</button>
-             </div>
-        </div> -->
-    <!-- </div> -->
+            <!-- When clicking on button,  call the right function  -->
+    
+            <button>Create</button>
+          </menu>
+        </dialog>
+    </div>
 
 
-<!-- container2 -->
 
-    <!-- <div class="card-container">
-        <div class="card-product">
-            <div class="card-img">
-                <img src="images/macbookpro14.webp" alt="" width="200px">
-            </div>
-            <div class="product-name">
-                <p>Macbook Pro 13"</p>
-            </div>
-            <div class="product-price">
-                <p>$1299</p> 
-             </div>
-             <div class="rating">
-                rating
-             </div>
-             <div class="buyBtn">
-                <button id="buyBtn">Buy now!</button>
-             </div>
-        </div>
-        <div class="card-product">
-            <div class="card-img">
-                <img src="images/pro13.png" alt="" width="220px">
-            </div>
-            <div class="product-name">
-                <p>Macbook Pro 14"</p>
-            </div>
-            <div class="product-price">
-                <p>$1999</p> 
-             </div>
-             <div class="rating">
-                rating
-             </div>
-             <div class="buyBtn">
-                <button id="buyBtn">Buy now!</button>
-             </div>
-        </div>
-        <div class="card-product">
-            <div class="card-img">
-                <img src="images/Studio-Display.jpg" alt="" width="185px">
-            </div>
-            <div class="product-name">
-                <p>Studio Display</p>
-            </div>
-            <div class="product-price">
-                <p>$1599</p> 
-             </div>
-             <div class="rating">
-                rating
-             </div>
-             <div class="buyBtn">
-                <button id="buyBtn">Buy now!</button>
-             </div>
-        </div>
-        <div class="card-product">
-            <div class="card-img">
-                <img src="images/Pro Display XDR.webp" alt="" width="200px">
-            </div>
-            <div class="product-name">
-                <p>Pro Display XDR</p>
-            </div>
-            <div class="product-price">
-                <p>$4999</p> 
-             </div>
-             <div class="rating">
-                rating
-             </div>
-             <div class="buyBtn">
-                <button id="buyBtn">Buy now!</button>
-             </div>
-        </div>
-    </div> -->
     <footer>
         <div class="customer-service">
             <h3>Customer Service</h3>

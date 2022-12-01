@@ -1,0 +1,20 @@
+@import "components/cart_card.scss";
+@import "components/mixin.scss";
+@import "components/variables.scss";
+@import "components/navbar.scss";
+@import "components/footer.scss";
+
+
+body{
+    @include body (100vh);
+    font-family: sans-serif;
+    @include spacing(0,0);
+    background:$bg;
+}
+.search-container{
+    background: #000;
+    input{
+        // background: #000;
+        padding: 18px;
+    }
+}

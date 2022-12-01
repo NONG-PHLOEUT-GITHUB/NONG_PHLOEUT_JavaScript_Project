@@ -3,7 +3,6 @@
 @import"button";
 
 .nav-container {
-    flex: 0.3;
     background:$navColor;
     position: sticky;
     top: 0;
@@ -18,7 +17,6 @@
             display: flex;
             @include flex-center(center, center);
             margin-left: -50px;
-            // background: #000;
         }
 
         .login {
@@ -28,6 +26,13 @@
             li {
                 display: flex;
                 padding: 10px;
+            }
+            #btn-login ,#btn-register ,#btn-cart {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                padding: 5px;
+                width: 45%;
             }
         }
     }
@@ -45,7 +50,7 @@
             @include flexSize(1);
             border: none;
             outline: none;
-            padding: 15px;
+            // padding: 15px;
         }
 
         span {
@@ -77,4 +82,27 @@
             border-radius: $border-radius;
         }
     }
+}
+
+.media-register {
+    @include flexProp(flex, row) {
+        justify-content: center;
+        align-items: center;
+        .fa-facebook {
+            font-size: 30px;
+            text-decoration: none;
+            color: blue;
+            margin-left: 20px;
+        }
+        .fa-google-plus {
+            @extend .fa-facebook;
+            color: red;
+        }
+    }
+}
+
+button{
+    @include button;
+    margin: 10px;
+    width: 80px;
 }

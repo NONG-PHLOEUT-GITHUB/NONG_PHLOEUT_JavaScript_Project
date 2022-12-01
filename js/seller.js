@@ -8,13 +8,13 @@ const dom_product_dialog = document.querySelector("#product-dialog");  // get fr
 
 // let listOfProducts = [
 //   {
-//     img: "https://m.media-amazon.com/images/I/31zUXtO55tL._AC_SY1000_.jpg", name: "laptop", price: "$100" ,describe : "black"
+//     img: "https://m.media-amazon.com/images/I/31zUXtO55tL._AC_SY1000_.jpg", name: "laptop", price: "$100" ,currency:"$",describe : "black"
 //   },
 //   {
-//     img: "https://m.media-amazon.com/images/I/31zUXtO55tL._AC_SY1000_.jpg", name: "laptop", price: "$300" ,describe : "black"
+//     img: "https://m.media-amazon.com/images/I/31zUXtO55tL._AC_SY1000_.jpg", name: "laptop", price: "$300" ,currency:"$",describe : "black"
 //   },
 //   {
-//     img: "https://m.media-amazon.com/images/I/31zUXtO55tL._AC_SY1000_.jpg", name: "laptop", price: "$200" ,describe : "black"
+//     img: "https://m.media-amazon.com/images/I/31zUXtO55tL._AC_SY1000_.jpg", name: "laptop", price: "$200" ,currency:"$",describe : "black"
 //   }
 // ]
 
@@ -47,7 +47,7 @@ function onCancel(e) {
 }
 //======================================form show ==========================
 
-function onEdit() {
+function onSave() {
   hide(dom_product_dialog); // hide 
   //button on edit
 }
@@ -71,6 +71,7 @@ function createProduct() {
   sortProduce(listOfProducts)
   for (let index = 0; index < listOfProducts.length; index++) {
     let listOfProduct = listOfProducts[index];
+    console.log(listOfProduct);
 
     //create  tr
     let tr = document.createElement("tr");
@@ -95,9 +96,17 @@ function createProduct() {
     tdName.textContent = listOfProduct.name;
  //create td price
 
-    let td2 = document.createElement("td");
+  let td2 = document.createElement("td");
     td2.setAttribute("id", "price");
-    td2.textContent = "$"+listOfProduct.price ;
+    let currency = listOfProduct.currency;
+    if(currency !== "៛"){
+      td2.textContent = currency + listOfProduct.price;
+    }
+    else{
+      td2.textContent = listOfProduct.price + currency;
+    }
+    console.log(currency);
+  // we should have currency for + with price 
  //create td describe
     let tdDescribe = document.createElement("td");
     tdDescribe.setAttribute("id", "describe");
@@ -118,14 +127,14 @@ function createProduct() {
 
     let buttonRemove = document.createElement("button");
     buttonRemove.setAttribute("id", "button-remove");
-    buttonRemove.textContent = "Remove"
+    buttonRemove.textContent = "Remove"; //remove button
     //addEventListener
     buttonRemove.addEventListener("click", removeProduct);
     // console.log(buttonRemove);
 
     let buttonEdit = document.createElement("button");
     buttonEdit.setAttribute("id", "button-edit");
-    buttonEdit.textContent = "Edit"
+    buttonEdit.textContent = "Edit"; //botton edit 
     //addEventListener
     buttonEdit.addEventListener("click", editProduct)
     //appendChild to td3
@@ -136,9 +145,9 @@ function createProduct() {
 }
 //=======================================Add new product======================
 function onAddNewProduct() {
-
+  formTitle.textContent = "Add new Product";
   buttonCreate.textContent="Create"; // when click add new product forwards to fuction create product
-  show(dom_product_dialog);
+  show(dom_product_dialog);  // change textContent to save
   index = null; // for get value form array object
   clearFormValues() // for clear value from form after input already
 
@@ -147,13 +156,15 @@ let addButton = document.getElementById("add-product");
 addButton.addEventListener("click", onAddNewProduct);
 //=======================================Edit pop up=====================
 function editProduct(event) {
-  buttonCreate.textContent = "Save";
+  buttonCreate.textContent = "Save"; // change textContent to save
+  formTitle.textContent = "Edit Product";
   index = event.target.parentElement.parentElement.dataset.index; // index of the question
   // console.log(index.img);
   document.getElementById("img-value").value = listOfProducts[index].img;
   document.getElementById("name-value").value = listOfProducts[index].name;
   document.getElementById("price-value").value = listOfProducts[index].price;
   document.getElementById("describe-value").value = listOfProducts[index].describe;
+  document.getElementById("currency-value").value = listOfProducts[index].currency;
   console.log(listOfProducts[index].img)
 
   show(dom_product_dialog);
@@ -166,11 +177,11 @@ function clearFormValues(){
   document.getElementById("describe-value").value = "";
   document.getElementById("price-value").value = "";
   document.getElementById("img-value").value = "";
+  document.getElementById("currency-value").value = "";
 }
 //=======================================Remove============================
 function removeProduct(event){
 
-  // alert("hello")
     //  Get index
     let index = event.target.parentElement.parentElement.dataset.index;
     // console.log(index)
@@ -199,6 +210,7 @@ function onCreate() {
     edtProduct.name = document.getElementById("name-value").value;
     edtProduct.price = document.getElementById("price-value").value;
     edtProduct.describe = document.getElementById("describe-value").value;
+    edtProduct.currency = document.getElementById("currency-value").value;
   }else{
     createNew  = {};
     let isAlert = false;
@@ -206,6 +218,7 @@ function onCreate() {
     createNew.name = document.getElementById("name-value").value;
     createNew.price = document.getElementById("price-value").value;
     createNew.describe = document.getElementById("describe-value").value;
+    createNew.currency = document.getElementById("currency-value").value;
     if(createNew.img === "" || createNew.name === "" || createNew.price === "" || createNew.describe === ""){
       isAlert = true;
       productsAlert(isAlert)
@@ -228,17 +241,8 @@ function productsAlert(alertInfo) {
     window.confirm("You most input all!")
   }
 }
-//=======================================MAIN=======================
 
-let button = dom_product_dialog.querySelectorAll('button');
-// console.log(button);
-
-let buttonCancle = button[0];
-buttonCancle.addEventListener("click", onCancel);  // click cancel button on form add products// click add button on form add products
-
-let buttonCreate = button[1];
-buttonCreate.addEventListener("click", onCreate); // click add button on form add products
-//=======================================dropdown function========================
+//=======================================sortProduct function========================
 function sortProduce (product){
   product.sort((a, b) => {
     const nameA = a.name.toUpperCase(); // ignore upper and lowercase
@@ -254,6 +258,19 @@ function sortProduce (product){
     return 0;
   });
 }
+//=======================================MAIN=======================
+
+let button = dom_product_dialog.querySelectorAll('button');
+// console.log(button);
+
+let buttonCancle = button[0];
+buttonCancle.addEventListener("click", onCancel);  // click cancel button on form add products// click add button on form add products
+
+let buttonCreate = button[1];
+buttonCreate.addEventListener("click", onCreate); // click add button on form add products
+
+// form titile
+let formTitle = document.getElementById("titleOfForm");
 //=======================================CALL FUCTION=======================
 
 createProduct()

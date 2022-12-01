@@ -1,0 +1,29 @@
+@import"variables";
+.card-product{
+    display: flex;
+    flex: 1;
+    background: $bg;
+    border: solid 1px;
+    .img-product{
+        flex: 1;
+        img{
+            width: 50%;
+        }
+    }
+    .product-detail{
+        flex: 1;
+    }
+    .product-price{
+        flex: 1;
+    }
+    .check{
+        flex: 0.7;
+        display: flex;
+        align-self: flex-end;
+        justify-content: flex-end;
+        // background: #000;
+        #check{
+            width: 80%;
+        }
+    }
+}

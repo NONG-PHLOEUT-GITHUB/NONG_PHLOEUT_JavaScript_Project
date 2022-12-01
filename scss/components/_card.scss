@@ -40,6 +40,7 @@
         // background: #000;
         #buyBtn{
             @include button;
+            width: 40%;
         }
     }
     .card-product:hover{
