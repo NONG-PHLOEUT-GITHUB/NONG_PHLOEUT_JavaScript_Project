@@ -5,7 +5,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Seller</title>
   <link rel="stylesheet" href="../css/seller.min.css">
 </head>
 
@@ -48,13 +48,15 @@
   <div id="product-dialog" style="display: none">
     <dialog open>
       <section>
-        <h2>Add new product</h2>
+        <h2 id="titleOfForm">Add new product</h2>
         <label for="">Name of product</label>
         <input id="name-value" type="text" placeholder="Add  product name" />
         <label for="">Describe</label>
         <input id="describe-value" type="text" placeholder="Add  product name" />
         <label for="">Price of product</label>
         <input id="price-value" type="number" placeholder="Add product price" />
+        <label for="">Currency</label>
+        <input id="currency-value" type="text" placeholder="Add currency" />
         <label for="">img</label>
         <input id="img-value" type="text" placeholder="Enter img" />
       </section>
@@ -66,7 +68,6 @@
         <!-- When clicking on button,  call the right function  -->
         <button>Save</button>
 
-        <!-- <button>Create</button> -->
       </menu>
     </dialog>
   </div>
