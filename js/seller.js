@@ -24,13 +24,25 @@ function saveProduct() {
 }
 
 //=======================================fuction get value form local storage=========================
-function loadProduct() {
+function loadItem() {
   let productStorage = JSON.parse(localStorage.getItem("products"));
   if (productStorage !== null) {
     listOfProducts = productStorage;
     // console.log(listOfProducts)
   }
 }
+
+// mew function following by parameter
+// function saveItem(key, value) {
+//   localStorage.setItem(key, JSON.stringify(value));
+// }
+// //=======================================fuction get value form local storage=========================
+// function loadItem(storage,key) {
+//   let itmes = JSON.parse(localStorage.getItem(key));
+//   if (itmes !== null) {
+//     storage = itmes;
+//   }  
+// }
 //=======================================fuction hide=========================
 function hide(element) {
   element.style.display = "none";
@@ -45,19 +57,13 @@ function onCancel(e) {
   hide(dom_product_dialog);
    //button on cancel
 }
-//======================================form show ==========================
 
-function onSave() {
-  hide(dom_product_dialog); // hide 
-  //button on edit
-}
 //=======================================create products======================
 
-function createProduct() {
+function displayProducts() {
  
-  loadProduct() /// for don't display value form local storage
+  loadItem() /// for don't display value form local storage
   // reload the old product
-  // saveProduct()
 
   //remove table products
   let dom_products_container = document.querySelector("#body-table");
@@ -190,10 +196,10 @@ function removeProduct(event){
     listOfProducts.splice(index, 1);
   
     // Save to local storage
-    saveProduct()
-  
+    saveProduct() //old fuction
+
     // Update the view
-    createProduct()
+    displayProducts()
 
 }
 //=======================================Creat product======================
@@ -229,7 +235,7 @@ function onCreate() {
   }
   // console.log(createNew)
   saveProduct(); //save Products on localStorage
-  createProduct() // for get display newCreateProduct
+  displayProducts() // for get display newCreateProduct
   // 3- Update the list of Product, save Product on local sotrage, update the view
 }
 
@@ -273,6 +279,6 @@ buttonCreate.addEventListener("click", onCreate); // click add button on form ad
 let formTitle = document.getElementById("titleOfForm");
 //=======================================CALL FUCTION=======================
 
-createProduct()
+displayProducts()
 
-loadProduct()
+loadItem()

@@ -1,12 +1,9 @@
-let cardOfProduct = document.querySelectorAll("p");
-let paraName = cardOfProduct[0];
-let paraPrice = cardOfProduct[1];
-// console.log(paraName.textContent)
 
 const productContainer = document.querySelector(".card-container");
 
 const dom_product_dialog = document.querySelector("#product-dialog"); 
-//=======================================array object==========================
+// =======================================array object==========================
+let listOfProducts = [] // store the list of products
 // let listOfProducts = [
 //   {
 //     img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-macbook-air-space-gray-m1-202010?wid=539&hei=312&fmt=jpeg&qlt=95&.v=1634145627000", name: "laptop", price: "$100" ,describe : "black"
@@ -24,29 +21,20 @@ const dom_product_dialog = document.querySelector("#product-dialog");
 //     img: "https://m.media-amazon.com/images/I/31zUXtO55tL._AC_SY1000_.jpg", name: "laptop", price: "$200" ,describe : "black"
 //   }
 // ]
-let carts=[];
+let carts=[]; /// for push value to local storage
 //=======================================fuction save in local stroage===================
-function saveProduct() {
-  // getUserData()
-  localStorage.setItem("products", JSON.stringify(listOfProducts));
+function saveItem(key, value) {
+  console.log(value)
+  localStorage.setItem(key, JSON.stringify(value));
 }
-function savecart() {
-  localStorage.setItem("cart",JSON.stringify(carts))
-}
-
 //=======================================fuction get value form local storage=========================
-function loadProduct() {
-  let productStorage = JSON.parse(localStorage.getItem("products"));
-  let cartstorage = JSON.parse(localStorage.getItem("cart"))
-  if (productStorage !== null) {
-    listOfProducts = productStorage;
-    // console.log(listOfProducts)
-  }
-  if (cartstorage !== null) {
-    carts = cartstorage;
-    // console.log(listOfProducts)
-  }
-  
+function loadItem(storage,key) {
+  let itmes = JSON.parse(localStorage.getItem(key));
+  if (itmes !== null) {
+    return  itmes;
+  }  
+  saveItem(key,storage);
+  return storage;
 }
 
 //=======================================fuction hide=========================
@@ -58,57 +46,34 @@ function hide(element) {
 function show(element) {
   element.style.display = "block";
 }
-//=======================================show form login========================
-function showButtonLogin(){
-  show(dom_product_dialog);
-  buttonCreate.textContent = "Login";
-  formTitle.textContent = "LOGIN";
-  // for remove input fields
-  labelName1.style.display  = "none";
-  labelName2.style.display  = "none";
-  firstName.style.display  = "none";
-  lastName.style.display  = "none";
-  optionLogin.textContent = "or login with";
-  passwordLabel.textContent = "Forgot password";
-  passwordLabel.style.color = "blue";
-}
-function showButtonRegister(){
-  show(dom_product_dialog);
-  buttonCreate.textContent = "Create";
-  formTitle.textContent = "REGISTER";
-// for dispaly input fields
-  labelName1.style.display  = "block";
-  labelName2.style.display  = "block";
-  firstName.style.display  = "block";
-  lastName.style.display  = "block";
-  optionLogin.textContent = "or sign up with";
-  passwordLabel.textContent = "Remember your password";
-  passwordLabel.style.color = "black"
-}
+
+//=======================================get value of Product========================
 function hideCancelButton(){
   hide(dom_product_dialog);
   // when click cancel button 
 }
+//=======================================get value of Product========================
 function hideCreateButton(){
   hide(dom_product_dialog);
   // when click create button 
 }
 
-//=======================================get value of Product========================
-function getUserData(event){
+//=======================================User clik to cart========================
+function getUserData(event){ /// for user click on add to cart and get value to localStorage
   let newcart={};
   let index = event.target.dataset.index;
+    carts  = loadItem(carts,"carts");
     newcart = listOfProducts[index];
-    console.log(newcart);
 
-    carts.push(newcart);
-    savecart();
+    carts.push(newcart); // push new cart to list of cart products
+    saveItem("carts", carts);
 
 }
 //=======================================get value of Product========================
-  function createProduct() {
-    loadProduct() // for despaly on sceen costomer
-    // saveProduct() /// for save value form local storage
+  function displayProducts() {
+    // console.log()
+     // for despaly on sceen costomer
+    console.log(listOfProducts)
     for(let index = 0 ; index < listOfProducts.length ; index++){
       let listOfProduct = listOfProducts[index]; // get value form list of products
       // console.log(listOfProduct)
@@ -143,6 +108,7 @@ function getUserData(event){
       productPrice.appendChild(paragraphPrice);
 
       let currency = listOfProduct.currency;
+      console.log(listOfProduct)
       if(currency !== "៛"){
         paragraphPrice.textContent = currency + listOfProduct.price;
       }
@@ -153,8 +119,7 @@ function getUserData(event){
       
       productRating =  document.createElement("div");
       productRating.classList.add("rating");
-      // productRating.textContent = "&#9734;"
-      // productName.textContent = listOfProduct.describe;
+
 
       containsButton =  document.createElement("div");
       containsButton.classList.add("buyBtn");
@@ -181,12 +146,34 @@ function getUserData(event){
    
   }
 
-  //=======================================stor array form add to card========================
-
-// function valuesOfAddToCart() {
-
-
-// }
+ 
+//=======================================show form login========================
+function showButtonLogin(){
+  show(dom_product_dialog);
+  buttonCreate.textContent = "Login";
+  formTitle.textContent = "LOGIN";
+  // for remove input fields
+  labelName1.style.display  = "none";
+  labelName2.style.display  = "none";
+  firstName.style.display  = "none";
+  lastName.style.display  = "none";
+  optionLogin.textContent = "or login with";
+  passwordLabel.textContent = "Forgot password";
+  passwordLabel.style.color = "blue";
+}
+function showButtonRegister(){
+  show(dom_product_dialog);
+  buttonCreate.textContent = "Create";
+  formTitle.textContent = "REGISTER";
+// for dispaly input fields
+  labelName1.style.display  = "block";
+  labelName2.style.display  = "block";
+  firstName.style.display  = "block";
+  lastName.style.display  = "block";
+  optionLogin.textContent = "or sign up with";
+  passwordLabel.textContent = "Remember your password";
+  passwordLabel.style.color = "black"
+}
   //=======================================dropdown function========================
 
 function dropdowns() {
@@ -274,9 +261,13 @@ let firstName = document.getElementById("first-name");
 let lastName = document.getElementById("last-name");
 let optionLogin = document.getElementById("optionLogin");
 let passwordLabel = document.getElementById("password-label");
+
+// search products
+let cardOfProduct = document.querySelectorAll("p");
+let paraName = cardOfProduct[0];
+let paraPrice = cardOfProduct[1];
 //=======================================MAIN===================================
 // saveProduct()
+listOfProducts = loadItem(listOfProducts,"products");
+displayProducts();
 
-createProduct();
-
-loadProduct()
