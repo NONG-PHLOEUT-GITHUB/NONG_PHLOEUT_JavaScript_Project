@@ -4,6 +4,10 @@ const dom_bodyTable = document.getElementById("table-container"); // get from ta
 const dom_product_view = document.querySelector("#Products-view"); // get from form
 
 const dom_product_dialog = document.querySelector("#product-dialog");  // get from form
+
+let buttonCreate =document.getElementById("btn-create");
+let buttonCancle =document.getElementById("btn-cancel");
+let formTitle = document.getElementById("titleOfForm");
 //=======================================fuction arrayobject=========================
 
 // let listOfProducts = [
@@ -61,7 +65,8 @@ function onCancel(e) {
 //=======================================create products======================
 
 function displayProducts() {
- 
+  document.getElementById("add-currency").value= parseInt(JSON.parse(localStorage.getItem("money-exchange")))
+
   loadItem() /// for don't display value form local storage
   // reload the old product
 
@@ -77,7 +82,7 @@ function displayProducts() {
   sortProduce(listOfProducts)
   for (let index = 0; index < listOfProducts.length; index++) {
     let listOfProduct = listOfProducts[index];
-    console.log(listOfProduct);
+    // console.log(listOfProduct);
 
     //create  tr
     let tr = document.createElement("tr");
@@ -106,12 +111,12 @@ function displayProducts() {
     td2.setAttribute("id", "price");
     let currency = listOfProduct.currency;
     if(currency !== "៛"){
-      td2.textContent = currency + listOfProduct.price;
+      td2.textContent = currency + listOfProduct.usd;
     }
     else{
-      td2.textContent = listOfProduct.price + currency;
+      td2.textContent = listOfProduct.riel + currency;
     }
-    console.log(currency);
+    // console.log(currency);
   // we should have currency for + with price 
  //create td describe
     let tdDescribe = document.createElement("td");
@@ -151,6 +156,7 @@ function displayProducts() {
 }
 //=======================================Add new product======================
 function onAddNewProduct() {
+  checkOnPriceInput()
   formTitle.textContent = "Add new Product";
   buttonCreate.textContent="Create"; // when click add new product forwards to fuction create product
   show(dom_product_dialog);  // change textContent to save
@@ -159,19 +165,22 @@ function onAddNewProduct() {
 
 }
 let addButton = document.getElementById("add-product");
-addButton.addEventListener("click", onAddNewProduct);
+// addButton.addEventListener("click", onAddNewProduct);
 //=======================================Edit pop up=====================
 function editProduct(event) {
   buttonCreate.textContent = "Save"; // change textContent to save
   formTitle.textContent = "Edit Product";
   index = event.target.parentElement.parentElement.dataset.index; // index of the question
   // console.log(index.img);
+  document.querySelector("#currency-value").value=listOfProducts[index].currency;
+  checkOnPriceInput()
   document.getElementById("img-value").value = listOfProducts[index].img;
   document.getElementById("name-value").value = listOfProducts[index].name;
-  document.getElementById("price-value").value = listOfProducts[index].price;
   document.getElementById("describe-value").value = listOfProducts[index].describe;
   document.getElementById("currency-value").value = listOfProducts[index].currency;
-  console.log(listOfProducts[index].img)
+  document.getElementById("price-value-riel").value = listOfProducts[index].riel;
+  document.getElementById("price-value-usd").value = listOfProducts[index].usd;
+  // console.log(listOfProducts[index].usd)
 
   show(dom_product_dialog);
 
@@ -181,7 +190,8 @@ function editProduct(event) {
 function clearFormValues(){
   document.getElementById("name-value").value = "";
   document.getElementById("describe-value").value = "";
-  document.getElementById("price-value").value = "";
+  document.getElementById("price-value-riel").value = "";
+  document.getElementById("price-value-usd").value = "";
   document.getElementById("img-value").value = "";
   document.getElementById("currency-value").value = "";
 }
@@ -205,32 +215,34 @@ function removeProduct(event){
 //=======================================Creat product======================
 
 function onCreate() {
+  // console.log("yes")
   buttonCreate.textContent = "Create"
   // 1- Hide the dialog
   hide(dom_product_dialog);
   // 2- Create a new Product with the dialog form values
   if(index !== null){
     edtProduct  = listOfProducts[index];
-    console.log(edtProduct);
+    // console.log(edtProduct);
     edtProduct.img = document.getElementById("img-value").value;
     edtProduct.name = document.getElementById("name-value").value;
-    edtProduct.price = document.getElementById("price-value").value;
     edtProduct.describe = document.getElementById("describe-value").value;
     edtProduct.currency = document.getElementById("currency-value").value;
+    edtProduct.riel = document.getElementById("price-value-riel").value;
+    edtProduct.usd = document.getElementById("price-value-usd").value;
   }else{
     createNew  = {};
     let isAlert = false;
     createNew.img = document.getElementById("img-value").value;
     createNew.name = document.getElementById("name-value").value;
-    createNew.price = document.getElementById("price-value").value;
     createNew.describe = document.getElementById("describe-value").value;
     createNew.currency = document.getElementById("currency-value").value;
-    if(createNew.img === "" || createNew.name === "" || createNew.price === "" || createNew.describe === ""){
+    createNew.riel = document.getElementById("price-value-riel").value;
+    createNew.usd = document.getElementById("price-value-usd").value;
+    if(createNew.img === "" || createNew.name === "" || createNew.currency === "" || createNew.describe === ""){
       isAlert = true;
       productsAlert(isAlert)
     }else{
       listOfProducts.push(createNew);
-
     }
   }
   // console.log(createNew)
@@ -264,21 +276,39 @@ function sortProduce (product){
     return 0;
   });
 }
-//=======================================MAIN=======================
 
-let button = dom_product_dialog.querySelectorAll('button');
-// console.log(button);
+function checkOnPriceInput(){
 
-let buttonCancle = button[0];
-buttonCancle.addEventListener("click", onCancel);  // click cancel button on form add products// click add button on form add products
+  if(document.querySelector("#currency-value").value==="៛"){
+    document.querySelector("#price-value-usd").disabled = true;
+    document.querySelector("#price-value-riel").disabled = false;
+  }
+  else{
+    document.querySelector("#price-value-riel").disabled = true;
+    document.querySelector("#price-value-usd").disabled = false;
+  }
+}
+function calculatePrice(value){
+  let money_exchange = JSON.parse(localStorage.getItem("money-exchange"));
+  let priceInRiel = document.querySelector("#price-value-riel").value
+  let priceInUSD = document.querySelector("#price-value-usd").value
+  if (value ==='៛'){
+    document.querySelector("#price-value-usd").value = priceInRiel/money_exchange;
+  }
+  else{
+    document.querySelector("#price-value-riel").value = priceInUSD*money_exchange;
+  }
+}
 
-let buttonCreate = button[1];
-buttonCreate.addEventListener("click", onCreate); // click add button on form add products
+function updateCurrency(){
+  let addCurrency = document.getElementById("add-currency").value;
+  localStorage.setItem("money-exchange", JSON.stringify(addCurrency));
+} 
 
-// form titile
-let formTitle = document.getElementById("titleOfForm");
+
 //=======================================CALL FUCTION=======================
 
 displayProducts()
 
 loadItem()
+

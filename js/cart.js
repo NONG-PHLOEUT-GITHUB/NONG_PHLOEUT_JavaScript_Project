@@ -6,18 +6,20 @@ function saveProduct() {
 }
 
 let carts = JSON.parse(localStorage.getItem("carts")); // get value form local stroage
-// console.log(carts);
+// console.log(carts)
       
-
+let totalPriceRiel = 0 ;
+let totalPriceUSD = 0 ;
 // //=======================================fuction get value form local storage=========================
 function displayCart(){
+    // totalPrice = 0
     for(let index = 0; index <carts.length ; index++) {
         let addToCart = carts[index];
 
         let cartProduct =  document.createElement("div");
         cartProduct.classList.add("card-product");
         cartProduct.dataset.index = index;
-        console.log(cartProduct);
+        // console.log(cartProduct);
         
 
         let imgProduct = document.createElement("div");
@@ -28,6 +30,11 @@ function displayCart(){
 
         imgProduct.appendChild(img);
 
+        // describe
+        let describe = document.createElement("h4");
+        describe.textContent = addToCart.describe;
+        console.log(describe)
+    
 
         let productPrice = document.createElement("div");
         productPrice.classList.add("product-price");
@@ -40,21 +47,25 @@ function displayCart(){
         let currency = addToCart.currency;
         // console.log(addToCart)
         if(currency !== "៛"){
-            h2.textContent = currency + addToCart.price;
+            h2.textContent = currency + addToCart.usd;
+            // console.log(h2)
         }
         else{
-            h2.textContent = addToCart.price + currency;
+            h2.textContent = addToCart.riel + currency;
+            // console.log(h2)
         }
+     
 
         productPrice.appendChild(h1);
         productPrice.appendChild(h2);
+        productPrice.appendChild(describe);
 
         let checkButton = document.createElement("div");
         checkButton.classList.add("check-cancel");
 
         let buttonCancle = document.createElement("button");
-        buttonCancle.id = "cancel";
-        buttonCancle.textContent = "Cancel";
+        buttonCancle.id = "remove";
+        buttonCancle.textContent = "Remove";
 
         buttonCancle.addEventListener("click", removeProduct);
         checkButton.appendChild(buttonCancle);
@@ -69,17 +80,45 @@ function displayCart(){
         hr = document.createElement("hr")
 
         shopStorages.appendChild(hr);
+
         // console.log(shopStorages);
-    }
+     
+
+        // console.log(total);
+
+        // get key value for currency riel
+        totalPriceRiel = parseInt(addToCart.riel);// form riel currency
+        totalPriceUSD += parseInt( addToCart.usd);// form riel currency
+    }  
+     let total = document.getElementById("total-usd");
+    total.textContent = "$"+totalPriceUSD ;
+    let totalRiel = document.getElementById("total-riel");
+    totalRiel.textContent =  totalPriceRiel + "៛" ;
+
+    console.log(totalPriceRiel);
+    console.log(totalPriceUSD);
 }
 
+//=======================================fuction remove=========================
+// function calculatePrice(value){
+//     let money_exchange = JSON.parse(localStorage.getItem("money-exchange"));
+//     // console.log(money_exchange);
+//     let priceInRiel = document.querySelector("#price-value-riel").value
+//     let priceInUSD = document.querySelector("#price-value-usd").value
+//     if (value ==='៛'){
+//       document.querySelector("#price-value-usd").value = priceInRiel/money_exchange;
+//     }
+//     else{
+//       document.querySelector("#price-value-riel").value = priceInUSD*money_exchange   ;
+//     }
+//   }
 //=======================================fuction remove=========================
 
 function removeProduct(event){
 
     //  Get index
     let index = event.target.parentElement.parentElement.dataset.index;
-    console.log(index)
+    // console.log(index)
 
     // Remove product
     carts.splice(index, 1);
@@ -91,9 +130,14 @@ function removeProduct(event){
     displayCart()
 
 }
-    // console.log("🚀 ~ file: cart.js:91 ~ removeProduct ~  displayCart()",  displayCart())
+   
 
 
+// function totalCurrency(carts){
+//     // let cartss = JSON.parse(localStorage.getItem("carts"));
+//     console.log(carts);
+//     // console.log(cartss)
+// }
 //=======================================fuction get value form local storage=========================
 
 displayCart()
@@ -101,3 +145,15 @@ displayCart()
 // saveProduct()
 
 // console.log sort cut crt+alt +"l"
+
+array = [2,3,4,6]
+let sum = 0
+// for(let i=0; i<array.length; i++){
+//     sum = sum + array[i]
+//     console.log(array[i])
+// }
+
+for(let value of array){
+    sum  += value
+}
+console.log(sum)

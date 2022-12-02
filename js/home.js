@@ -64,6 +64,7 @@ function getUserData(event){ /// for user click on add to cart and get value to 
   let index = event.target.dataset.index;
     carts  = loadItem(carts,"carts");
     newcart = listOfProducts[index];
+    newcart.qty  = 1
 
     carts.push(newcart); // push new cart to list of cart products
     saveItem("carts", carts);
@@ -73,7 +74,6 @@ function getUserData(event){ /// for user click on add to cart and get value to 
   function displayProducts() {
     // console.log()
      // for despaly on sceen costomer
-    console.log(listOfProducts)
     for(let index = 0 ; index < listOfProducts.length ; index++){
       let listOfProduct = listOfProducts[index]; // get value form list of products
       // console.log(listOfProduct)
@@ -110,10 +110,10 @@ function getUserData(event){ /// for user click on add to cart and get value to 
       let currency = listOfProduct.currency;
       console.log(listOfProduct)
       if(currency !== "៛"){
-        paragraphPrice.textContent = currency + listOfProduct.price;
+        paragraphPrice.textContent = currency + listOfProduct.usd;
       }
       else{
-        paragraphPrice.textContent = listOfProduct.price + currency;
+        paragraphPrice.textContent = listOfProduct.riel + currency;
       }
      
       
@@ -268,6 +268,8 @@ let paraName = cardOfProduct[0];
 let paraPrice = cardOfProduct[1];
 //=======================================MAIN===================================
 // saveProduct()
+
 listOfProducts = loadItem(listOfProducts,"products");
+
 displayProducts();
 
