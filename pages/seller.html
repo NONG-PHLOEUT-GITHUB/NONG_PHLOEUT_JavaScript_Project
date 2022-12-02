@@ -16,13 +16,17 @@
         <img src="../images/logo2.png" alt="" width="30%">
         <h2>MARKET</h2>
       </div>
-        <div id="manage">
+      <div id="manage">
           <h1>Product management</h1>
-        </div>
-        <div class="add">
-          <button id="add-product">Add product</button>
-        </div>
+      </div>
     </nav>
+  </div>
+  <div class="header">
+    <div class="add"><button id="add-product" onclick="onAddNewProduct()">Add product</button></div>
+    <div class="Update-currency">
+      <label for="currency">USD / KHR • CURRENCY</label>
+      <input type="number" oninput="updateCurrency()" name="currency" id="add-currency" onclick="updateCurrency()">
+    </div>
   </div>
   <table id="table-container">
     <thead>
@@ -47,21 +51,29 @@
         <input id="name-value" type="text" placeholder="Add  product name" />
         <label for="">Describe</label>
         <input id="describe-value" type="text" placeholder="Add  product name" />
-        <label for="">Price of product</label>
-        <input id="price-value" type="number" placeholder="Add product price" />
-        <label for="">Currency</label>
-        <input id="currency-value" type="text" placeholder="Add currency" />
+        <label for="currency">Currency</label>
+        <select onchange="checkOnPriceInput()" name="currency" id="currency-value">
+          <option value="$" >USD</option>
+          <option value="៛" selected>Riel</option>
+        </select>
+        <label for="">Price of product (៛)</label>
+        <input oninput="calculatePrice('៛')" id="price-value-riel" type="number" placeholder="Add product price in Riel" />
+        <label for="">Price of product ($)</label>
+        <!-- <input oninput="calculatePrice('$')" id="price-value-usd" type="number" placeholder="Add product price in USD" /> -->
+        <input id="price-value-usd" type="number" placeholder="Add product price in USD" />
+
+        <!-- <input id="currency-value" type="text" placeholder="Add currency" /> -->
+        
         <label for="">img</label>
         <input id="img-value" type="text" placeholder="Enter img" />
       </section>
 
       <menu>
         <!-- When clicking on button,  call the right function  -->
-        <button>Cancel</button>
+        <button id = 'btn-cancel' onclick="onCancel(event)">Cancel</button>
 
         <!-- When clicking on button,  call the right function  -->
-        <button>Save</button>
-
+        <button id = 'btn-create' onclick="onCreate(event)">Save</button>
       </menu>
     </dialog>
   </div>

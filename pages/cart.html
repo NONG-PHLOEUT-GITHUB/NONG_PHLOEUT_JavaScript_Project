@@ -23,51 +23,75 @@
             </div>
             <div class="login">
                 <ul>
-                    <button id="btn-cart"><li>Shop</li><a href="../index.html"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></button>
+                    <button id="btn-card"><a href="../index.html">Shop</a></button>
                     <button id="btn-login"><li>LOGIN</li><i class="fa fa-sign-in" aria-hidden="true"></i></button>
                     <button id="btn-register"><li>REGISTER</li><i><a href="#" class="fa fa-user-plus"></a></i></button>
                 </ul>
             </div>
         </nav>
     </div> 
-    <h2>Shopping Cart</h2>
-    <div class="card-product">
-        <div class="img-product">
-            <img src="../images/pro13.png" alt="">
+    <h1 id="shop-title">Shopping Cart</h1>
+    <div class="cart-total">
+        <div class="shop-storage">
+            <!-- for display cart -->
         </div>
-        <div class="product-detail">
-            <h3>Macbook Air M2</h3>
-        </div>
-        <div class="product-price">
-            <h3>$1299</h3>
-        </div>
-        <div class="check">
-            <button id="check">Cancel</button>
-        </div>
-        <div class="check">
-            <button id="check">Proceed to checkout</button>
-        </div>
-    </div>
-    <div class="card-product">
-        <div class="img-product">
-            <img src="../images/pro13.png" alt="">
-        </div>
-        <div class="product-detail">
-            <h3>Macbook Air M2</h3>
-        </div>
-        <div class="product-price">
-            <h3>$1299</h3>
-        </div>
-        <div class="check">
-            <button id="check">Cancel</button>
-        </div>
-        <div class="check">
-            <button id="check">Proceed to checkout</button>
+        <div class="header">
+            <div class="check-add">
+                <div class="total-price">
+                    <div class="dola">
+                        <h2>Total($) :</h2> <h2 id="total-usd">  </h2>
+                    </div>
+                    <div class="riel">
+                        <h2>Total(៛) :</h2> <h2 id="total-riel"> </h2>
+                    </div>
+                </div>
+                <button id="check-add">Proceed to checkout</button>
+            </div>
         </div>
     </div>
-    
+<!--  -->
+
+<div id="product-dialog" style="display:none">
+    <dialog open>
+      <section>
+        <h2 id="titleOfForm">Checkout</h2>
+        <div class="name">
+            <div class="first">
+                <label for="" id="label-name1">First Name</label>
+                <input id="first-name" type="text" placeholder="Enter your first name" />
+            </div>
+            <div class="last">
+                <label for="" id="label-name2">Last Name</label>
+                <input id="last-name" type="text" placeholder="Enter your last name" />
+            </div>
+        </div>
+        <label for="">Country</label>
+        <input id="text" type="text" placeholder="Country" />
+        <label for="">Street States</label>
+        <input id="text" type="text" placeholder="Country" />
+        <label for="">Town/City/State</label>
+        <input id="text" type="text" placeholder="Country" />
+        <label for="">ZIP</label>
+        <input id="text" type="text" placeholder="Country" />
+        <div class="name">
+            <div class="first">
+                <label for="" id="label-name1">Phone Number</label>
+                <input id="first-name" type="text" placeholder="Enter your Phone number" />
+            </div>
+            <div class="last">
+                <label for="" id="label-name2">Email</label>
+                <input id="last-name" type="email" placeholder="Enter your Email" />
+            </div>
+        </div>
+      </section>
+      <menu>
+        <button id="btn-oder" onclick="addEventListener(onCreate)">Place oder</button>
+      </menu>
+    </dialog>
+</div>
 
 
+<!--  -->
 
     <footer>
         <div class="customer-service">
