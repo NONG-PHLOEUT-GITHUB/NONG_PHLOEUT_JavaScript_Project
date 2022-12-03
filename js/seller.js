@@ -36,17 +36,6 @@ function loadItem() {
   }
 }
 
-// mew function following by parameter
-// function saveItem(key, value) {
-//   localStorage.setItem(key, JSON.stringify(value));
-// }
-// //=======================================fuction get value form local storage=========================
-// function loadItem(storage,key) {
-//   let itmes = JSON.parse(localStorage.getItem(key));
-//   if (itmes !== null) {
-//     storage = itmes;
-//   }  
-// }
 //=======================================fuction hide=========================
 function hide(element) {
   element.style.display = "none";
@@ -76,20 +65,17 @@ function displayProducts() {
   //create new once
   dom_products_container = document.createElement("tbody");
   dom_products_container.id = "body-table";
-  // console.log(dom_products_container)
   //append 
   dom_bodyTable.appendChild(dom_products_container);
   sortProduce(listOfProducts)
   for (let index = 0; index < listOfProducts.length; index++) {
     let listOfProduct = listOfProducts[index];
-    // console.log(listOfProduct);
 
     //create  tr
     let tr = document.createElement("tr");
     tr.setAttribute("id", "tr-container");
     tr.setAttribute("index", index);
     tr.dataset.index = index;
-    // console.log(tr)
 
     //create td img
     let td = document.createElement("td");
@@ -97,10 +83,8 @@ function displayProducts() {
     let Proimg = document.createElement("img");
     Proimg.src = listOfProduct.img;
 
-    // console.log(listOfProduct)
     td.appendChild(Proimg);
 
-    // console.log(td)
  //create td name
     let tdName = document.createElement("td");
     tdName.setAttribute("id", "name");
@@ -116,7 +100,6 @@ function displayProducts() {
     else{
       td2.textContent = listOfProduct.riel + currency;
     }
-    // console.log(currency);
   // we should have currency for + with price 
  //create td describe
     let tdDescribe = document.createElement("td");
@@ -141,7 +124,6 @@ function displayProducts() {
     buttonRemove.textContent = "Remove"; //remove button
     //addEventListener
     buttonRemove.addEventListener("click", removeProduct);
-    // console.log(buttonRemove);
 
     let buttonEdit = document.createElement("button");
     buttonEdit.setAttribute("id", "button-edit");
@@ -290,8 +272,8 @@ function checkOnPriceInput(){
 }
 function calculatePrice(value){
   let money_exchange = JSON.parse(localStorage.getItem("money-exchange"));
-  let priceInRiel = document.querySelector("#price-value-riel").value
-  let priceInUSD = document.querySelector("#price-value-usd").value
+  let priceInRiel = document.querySelector("#price-value-riel").value;
+  let priceInUSD = document.querySelector("#price-value-usd").value;
   if (value ==='៛'){
     document.querySelector("#price-value-usd").value = priceInRiel/money_exchange;
   }

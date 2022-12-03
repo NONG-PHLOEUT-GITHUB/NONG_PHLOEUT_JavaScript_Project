@@ -106,7 +106,7 @@ function displayCart(){
 
 
         // get key value for currency riel
-        totalPriceRiel = parseInt(addToCart.riel);// form riel currency
+        totalPriceRiel += parseInt(addToCart.riel);// form riel currency
         totalPriceUSD += parseInt( addToCart.usd);// form riel currency
     }  
      let total = document.getElementById("total-usd");

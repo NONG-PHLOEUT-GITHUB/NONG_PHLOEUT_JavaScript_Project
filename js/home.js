@@ -62,20 +62,22 @@ function hideCreateButton(){
 }
 
 //=======================================User clik to cart========================
+let qtys = 0
 function getUserData(event){ /// for user click on add to cart and get value to localStorage
   let newcart={};
   let index = event.target.dataset.index;
-  // console.log(index);
+
     carts  = loadItem(carts,"carts");
     newcart = listOfProducts[index];
     newcart.qty  = 1
-
     carts.push(newcart); // push new cart to list of cart products
     saveItem("carts", carts);
 
+    qtys += newcart.qty // plus new cart quantity
+    qty.textContent = qtys // change textContent
 }
 
-
+let qty = document.getElementById("qty"); // for display cart in browser
 //=======================================get value of Product========================
   function displayProducts() {
     // console.log()
@@ -186,19 +188,18 @@ function showButtonRegister(){
 }
 
 ////=============================// details //==========================================
+let dom_details_dialog = document.querySelector(".detail-ofproduct");
 function detailsProduct(event) {
-  
+  dom_details_dialog.style.display = "block";
+ 
   let prodcutDetails = JSON.parse(localStorage.getItem("products"));// get value form localStorage getItem
   let index = event.target.parentElement.dataset.index;
   // console.log(index);
   
   
   let prodcutDetail = prodcutDetails[index];
-  console.log(prodcutDetail);
+  // console.log(prodcutDetail);
   
-  
-  let dom_details_dialog = document.querySelector(".detail-ofproduct");
-  console.log(dom_details_dialog);
   
   let details = document.createElement("div");
   details.classList.add("details");
@@ -235,16 +236,35 @@ function detailsProduct(event) {
   usd.textContent ="$"+ prodcutDetail.usd;
   price.appendChild(riel);
   price.appendChild(usd);
-  // console.log(h1);
 
+  let stars = document.createElement("div");
+  stars.className="stars";
+  let createStars = 5
+  for(i = 0 ; i < createStars ; i++) {
+    let i = document.createElement("i");
+    i.className = "fa fa-star";
+    i.setAttribute("style", "font-size:23px ; color:gold")
+    stars.appendChild(i);
+
+  }
 
   delails_img.appendChild(img);
  
 
+  let button = document.createElement("div");
+  button.className = "back";
+  let btn =  document.createElement("button");
+  btn.id = "back";
+  btn.textContent = "Back";
+  button.appendChild(btn)
+  button.addEventListener("click", hideDetails)
+  
   describe.appendChild(name_prodcut);
+  describe.appendChild(stars);
   describe.appendChild(description);
   describe.appendChild(price);
-
+  describe.appendChild(button);
+  
   card_delails.appendChild(delails_img);
   card_delails.appendChild(describe);
 
@@ -252,8 +272,15 @@ function detailsProduct(event) {
   details.appendChild(card_delails);
 
   dom_details_dialog.appendChild(details);
-
+  
+  
 }
+
+function hideDetails(){
+  dom_details_dialog.style.display = 'none';
+}
+
+
   //=======================================dropdown function========================
 
 function dropdowns() {
@@ -312,7 +339,6 @@ let listButton = navbarButton[0];
 
 buttonLogin =  listButton.firstElementChild.nextElementSibling;
 buttonRegister = listButton.firstElementChild.nextElementSibling.nextElementSibling;
-// console.log(buttonRegister)
 
 //addEventListener
 
@@ -322,7 +348,6 @@ buttonRegister.addEventListener("click", showButtonRegister);
 
 ///
 let formButton = dom_product_dialog.querySelectorAll('button');
-// console.log(formButton);
 
 let buttonCancle = formButton[0];
 buttonCancle.addEventListener("click", hideCancelButton);  // click cancel button on form button and none form
@@ -332,7 +357,7 @@ buttonCreate.addEventListener("click", hideCreateButton); // click create button
 
 // form titile
 let formTitle = document.getElementById("titleOfForm");
-// console.log(formTitle);
+
 
 // delete form input 
 let labelName1 = document.getElementById("label-name1");
@@ -347,7 +372,7 @@ let cardOfProduct = document.querySelectorAll("p");
 let paraName = cardOfProduct[0];
 let paraPrice = cardOfProduct[1];
 //=======================================MAIN===================================
-// saveProduct()
+
 
 listOfProducts = loadItem(listOfProducts,"products");
 
