@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,6 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="../css/cart.min.css">
 </head>
+
 <body>
     <div class="nav-container">
         <nav id="navigation">
@@ -24,12 +26,16 @@
             <div class="login">
                 <ul>
                     <button id="btn-card"><a href="../index.html">Shop</a></button>
-                    <button id="btn-login"><li>LOGIN</li><i class="fa fa-sign-in" aria-hidden="true"></i></button>
-                    <button id="btn-register"><li>REGISTER</li><i><a href="#" class="fa fa-user-plus"></a></i></button>
+                    <button id="btn-login">
+                        <li>LOGIN</li><i class="fa fa-sign-in" aria-hidden="true"></i>
+                    </button>
+                    <button id="btn-register">
+                        <li>REGISTER</li><i><a href="#" class="fa fa-user-plus"></a></i>
+                    </button>
                 </ul>
             </div>
         </nav>
-    </div> 
+    </div>
     <h1 id="shop-title">Shopping Cart</h1>
     <div class="cart-total">
         <div class="shop-storage">
@@ -39,59 +45,95 @@
             <div class="check-add">
                 <div class="total-price">
                     <div class="dola">
-                        <h2>Total($) :</h2> <h2 id="total-usd">  </h2>
+                        <h2>Total($) :</h2>
+                        <h2 id="total-usd"> </h2>
                     </div>
                     <div class="riel">
-                        <h2>Total(៛) :</h2> <h2 id="total-riel"> </h2>
+                        <h2>Total(៛) :</h2>
+                        <h2 id="total-riel"> </h2>
                     </div>
                 </div>
-                <button id="check-add">Proceed to checkout</button>
+                <button id="check-add" onclick="checkout(event)">Proceed to checkout</button>
             </div>
         </div>
     </div>
-<!--  -->
+    <!--  -->
+    <div id="details">
+        
 
-<div id="product-dialog" style="display:none">
-    <dialog open>
-      <section>
-        <h2 id="titleOfForm">Checkout</h2>
-        <div class="name">
-            <div class="first">
-                <label for="" id="label-name1">First Name</label>
-                <input id="first-name" type="text" placeholder="Enter your first name" />
-            </div>
-            <div class="last">
-                <label for="" id="label-name2">Last Name</label>
-                <input id="last-name" type="text" placeholder="Enter your last name" />
-            </div>
-        </div>
-        <label for="">Country</label>
-        <input id="text" type="text" placeholder="Country" />
-        <label for="">Street States</label>
-        <input id="text" type="text" placeholder="Country" />
-        <label for="">Town/City/State</label>
-        <input id="text" type="text" placeholder="Country" />
-        <label for="">ZIP</label>
-        <input id="text" type="text" placeholder="Country" />
-        <div class="name">
-            <div class="first">
-                <label for="" id="label-name1">Phone Number</label>
-                <input id="first-name" type="text" placeholder="Enter your Phone number" />
-            </div>
-            <div class="last">
-                <label for="" id="label-name2">Email</label>
-                <input id="last-name" type="email" placeholder="Enter your Email" />
-            </div>
-        </div>
-      </section>
-      <menu>
-        <button id="btn-oder" onclick="addEventListener(onCreate)">Place oder</button>
-      </menu>
-    </dialog>
-</div>
+    </div>
+
+    <div id="product-dialog" style="display:none">
+        <dialog open>
+            <section>
+                <h2 id="titleOfForm">Checkout</h2>
+                <div class="name">
+                    <div class="first">
+                        <label for="" id="label-name1">First Name</label>
+                        <input id="first-name" type="text" placeholder="Enter your first name" />
+                    </div>
+                    <div class="last">
+                        <label for="" id="label-name2">Last Name</label>
+                        <input id="last-name" type="text" placeholder="Enter your last name" />
+                    </div>
+                </div>
+                <label for="">Country</label>
+                <input id="text" type="text" placeholder="Country" />
+                <label for="">Street States</label>
+                <input id="text" type="text" placeholder="Country" />
+                <label for="">Town/City/State</label>
+                <input id="text" type="text" placeholder="Country" />
+                <label for="">ZIP</label>
+                <input id="text" type="text" placeholder="Country" />
+                <div class="name">
+                    <div class="first">
+                        <label for="" id="label-name1">Phone Number</label>
+                        <input id="first-name" type="text" placeholder="Enter your Phone number" />
+                    </div>
+                    <div class="last">
+                        <label for="" id="label-name2">Email</label>
+                        <input id="last-name" type="email" placeholder="Enter your Email" />
+                    </div>
+                </div>
+            </section>
+            <menu>
+                <button id="btn-oder" onclick="paymenet(event)">Place oder</button>
+            </menu>
+        </dialog>
+    </div>
 
 
-<!--  -->
+    <!-- form pay men  -->
+    <!--  -->
+
+    <div id="payment-dialog" style="display:none">
+        <dialog open>
+            <div class="card-payment">
+                <img src="../images/payment.jpg" alt="" width="96%">
+            </div>
+            <section>
+                <h2 id="titleOfForm">Payment Detail</h2>
+                <label for="">Card older Name</label>
+                <input id="text" type="text" placeholder="Your Card Name " />
+                <label for="">Card Number</label>
+                <input id="text" type="number" placeholder="Your Card Number" />
+                <div class="name">
+                    <div class="first">
+                        <label for="" id="label-name1">Expiretion</label>
+                        <input id="first-name" type="date" placeholder="" />
+                    </div>
+                    <div class="last">
+                        <label for="" id="label-name2">CCV/CVC</label>
+                        <input id="last-name" type="email" placeholder="XXX" />
+                    </div>
+                </div>
+                <menu>
+                    <button id="btn-payment" onclick="pay(event)">Pay</button>
+                </menu>
+            </section>
+        </dialog>
+    </div>
+    <!--  -->
 
     <footer>
         <div class="customer-service">
@@ -101,7 +143,7 @@
         </div>
         <div class="contact-media">
             <div class="follow">
-                <h3>Follow  Us</h3>
+                <h3>Follow Us</h3>
             </div>
             <div class="media">
                 <i><a href="#" class="fa fa-facebook"></a></i>
@@ -118,7 +160,5 @@
     </footer>
 </body>
 <script src="../js/cart.js"></script>
+
 </html>
-
-
-
