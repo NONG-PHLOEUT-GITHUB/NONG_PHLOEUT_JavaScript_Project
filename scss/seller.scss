@@ -9,3 +9,29 @@ body{
     @include spacing(0,0);
     background:$bg;
 }
+.nav-container{
+    background: rgb(168, 104, 104);
+    #manage{
+        flex: 0.8;
+        display: flex;
+        justify-content: flex-start;
+    }
+}
+.header{
+    display: flex;
+    padding-top: 30px ;
+    // background: rgb(223, 223, 223);
+    justify-content: space-between;
+    .Update-currency{
+        display: flex;
+        justify-content: end;
+        margin-right: 60px;
+        align-items: center;
+        width: 40%;
+        input{
+            width: 150px;
+            margin:0px 10px;
+            // background: #000;
+        }
+    }
+}

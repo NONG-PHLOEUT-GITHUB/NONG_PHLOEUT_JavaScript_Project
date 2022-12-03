@@ -1,0 +1,55 @@
+// .detail-ofproduct{
+//     // background: #000;
+// }
+
+.details{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(78, 76, 76, 0.75);
+    z-index: 10;
+    .card-delails{
+        background: white;
+        // background: #000;
+        width: 50%;
+        height: 80vh;
+        border-radius: 10px;
+        display: flex;
+        .delails-img{
+            // background: rgb(170, 80, 80);
+            flex: 1;
+            // border-radius: 10px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            img{
+                width: 90%;
+            }
+        }
+        .descript{
+            // background: rgb(175, 80, 80);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            .name-prodcut{
+                background: rgb(110, 60, 60);
+                flex: 1;
+            }
+            .description{
+                @extend .name-prodcut;
+                background: rgb(189, 158, 158);
+                // flex: 1;
+            }
+            .price{
+                @extend .name-prodcut;
+          
+                background: rgb(161, 115, 115);
+            }
+        }
+    }
+}
