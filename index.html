@@ -25,7 +25,7 @@
             </div>
             <div class="login">
                 <ul>
-                    <button id="btn-cart"><li>Cart</li><a href="pages/cart.html"><i class="fa fa-cart-plus" aria-hidden="true"></i></a></button>
+                    <button id="btn-card"><a href="pages/cart.html"> Cart</a><i class="fa fa-cart-plus" aria-hidden="true"></i></button>
                     <button id="btn-login"><li>LOGIN</li><i class="fa fa-sign-in" aria-hidden="true"></i></button>
                     <button id="btn-register"><li>REGISTER</li><i><a href="#" class="fa fa-user-plus"></a></i></button>
                 </ul>
@@ -43,32 +43,32 @@
                 <a href="#contact">MSI</a>
             </div>
         </div>
-        <!-- <div class="baner">
-                <img src="images/baner2.png" alt="" width="80%">
-         </div> -->
     </div>
-    
     <div class="card-container">
-        <!-- for apped product contaienr -->
-        <!-- <div class="card-product">
-            <div class="card-img">
-                <img src="images/m2.jpg" alt="" width="200px">
+
+     <!-- display on sceen-->
+
+    </div>
+    <div class="detail-ofproduct" style="display: 0">
+        <!-- <div class="details">
+            <div class="card-delails">
+                <div class="delails-img">
+                    <img src="images/payment.jpg" alt="">
+                </div>
+                <div class="descript">
+                    <div class="name-prodcut">
+                        hhh
+                    </div>
+                    <div class="description">
+                        dd
+                    </div>
+                    <div class="price">
+
+                    </div>
+                </div>
             </div>
-            <div class="product-name">
-                <p>Macbook Air M2</p>
-            </div>
-            <div class="product-price">
-               <p>$1199</p> 
-            </div>
-            <div class="rating">
-                rating
-             </div>
-             <div class="buyBtn">
-                <button id="buyBtn">Buy now!</button>
-             </div>
         </div> -->
     </div>
-
     <!-- <!-tp up ->  -->
     <div id="product-dialog" style="display: none">
         <dialog open>
@@ -90,15 +90,12 @@
             <i><a href="#" class="fa fa-google-plus"></a></i>
           </div>
           <menu>
-            <!-- When clicking on button,  call the right function  -->
-            <button>Cancel</button>
-    
-            <!-- When clicking on button,  call the right function  -->
-    
-            <button>Create</button>
+            <button onclick="addEventListener(onCancel)">Cancel</button>
+            <button onclick="addEventListener(onCreate)">Save</button>
           </menu>
         </dialog>
     </div>
+
 
 
 

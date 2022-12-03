@@ -373,9 +373,9 @@ footer .contact-media .fa-youtube {
 
 dialog {
   position: fixed;
-  top: 1vh;
-  left: 20%;
-  width: 60%;
+  top: 0px;
+  left: 25%;
+  width: 50%;
   z-index: 100;
   border-radius: 12px;
   border: none;
@@ -413,13 +413,17 @@ dialog label {
 
 input {
   display: block;
-  width: 95%;
+  width: 98%;
   border: 1px solid #ccc;
   font-size: 1.1rem;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   border-radius: 10px;
-  padding: 10px;
+  padding: 5px;
+}
+
+::placeholder {
+  font-size: 15px;
 }
 
 input:focus {
@@ -446,6 +450,56 @@ button a {
 
 #button-remove {
   background: red;
+}
+
+select {
+  padding: 5px;
+  width: 50%;
+  border-radius: 10px;
+}
+
+.details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100%;
+  background-color: rgba(78, 76, 76, 0.75);
+  z-index: 10;
+}
+.details .card-delails {
+  background: white;
+  width: 50%;
+  height: 80vh;
+  border-radius: 10px;
+  display: flex;
+}
+.details .card-delails .delails-img {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.details .card-delails .delails-img img {
+  width: 90%;
+}
+.details .card-delails .descript {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+.details .card-delails .descript .name-prodcut, .details .card-delails .descript .price, .details .card-delails .descript .description {
+  background: rgb(110, 60, 60);
+  flex: 1;
+}
+.details .card-delails .descript .description {
+  background: rgb(189, 158, 158);
+}
+.details .card-delails .descript .price {
+  background: rgb(161, 115, 115);
 }
 
 body {
@@ -482,4 +536,8 @@ body {
 #product-dialog section label {
   font-weight: 1;
   font-size: 16px;
+}
+
+dialog {
+  width: 25%;
 }/*# sourceMappingURL=home.css.map */
