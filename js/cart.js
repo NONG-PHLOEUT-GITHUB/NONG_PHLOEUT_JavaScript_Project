@@ -1,5 +1,8 @@
 
 const shopStorages = document.querySelector(".shop-storage");
+const dom_dialog = document.querySelector("#product-dialog");
+const payment_dialog = document.querySelector("#payment-dialog");
+
 //=======================================fuction save in local stroage===================
 function saveProduct() {
     localStorage.setItem("carts", JSON.stringify(carts)); //save value in local
@@ -8,6 +11,18 @@ function saveProduct() {
 let carts = JSON.parse(localStorage.getItem("carts")); // get value form local stroage
 // console.log(carts)
       
+//=======================================fuction hide=========================
+function hide(element) {
+    element.style.display = "none";
+  }
+  
+  //=======================================duction show=======================
+  function show(element) {
+    element.style.display = "block";
+  }
+
+
+// //=======================================fuction get value form local storage=========================
 let totalPriceRiel = 0 ;
 let totalPriceUSD = 0 ;
 // //=======================================fuction get value form local storage=========================
@@ -33,7 +48,7 @@ function displayCart(){
         // describe
         let describe = document.createElement("h4");
         describe.textContent = addToCart.describe;
-        console.log(describe)
+        // console.log(describe)
     
 
         let productPrice = document.createElement("div");
@@ -60,6 +75,14 @@ function displayCart(){
         productPrice.appendChild(h2);
         productPrice.appendChild(describe);
 
+        // qty of product
+        let input = document.createElement("input");
+        input.type = "number";
+        input.value = "qty";
+        input.id = "input-qty";
+        input.placeholder = "Qty";
+        productPrice.appendChild(input);
+
         let checkButton = document.createElement("div");
         checkButton.classList.add("check-cancel");
 
@@ -81,10 +104,6 @@ function displayCart(){
 
         shopStorages.appendChild(hr);
 
-        // console.log(shopStorages);
-     
-
-        // console.log(total);
 
         // get key value for currency riel
         totalPriceRiel = parseInt(addToCart.riel);// form riel currency
@@ -95,36 +114,25 @@ function displayCart(){
     let totalRiel = document.getElementById("total-riel");
     totalRiel.textContent =  totalPriceRiel + "៛" ;
 
-    console.log(totalPriceRiel);
-    console.log(totalPriceUSD);
+    // console.log(totalPriceRiel);
+    // console.log(totalPriceUSD);
+    // let getValue = document.getElementById("input-qty");
+    // console.log(getValue.value);
 }
 
-//=======================================fuction remove=========================
-// function calculatePrice(value){
-//     let money_exchange = JSON.parse(localStorage.getItem("money-exchange"));
-//     // console.log(money_exchange);
-//     let priceInRiel = document.querySelector("#price-value-riel").value
-//     let priceInUSD = document.querySelector("#price-value-usd").value
-//     if (value ==='៛'){
-//       document.querySelector("#price-value-usd").value = priceInRiel/money_exchange;
-//     }
-//     else{
-//       document.querySelector("#price-value-riel").value = priceInUSD*money_exchange   ;
-//     }
-//   }
 //=======================================fuction remove=========================
 
 function removeProduct(event){
 
     //  Get index
     let index = event.target.parentElement.parentElement.dataset.index;
-    // console.log(index)
-
+    
     // Remove product
     carts.splice(index, 1);
+    console.log(carts)
   
     // Save to local storage
-    saveProduct() //old fuction
+    saveProduct() 
 
     // Update the view
     displayCart()
@@ -132,28 +140,24 @@ function removeProduct(event){
 }
    
 
+//=======================================checkout=========================
+function checkout() {
+    show(dom_dialog);
+}
+function paymenet() {
+    hide(dom_dialog);
+    show(payment_dialog);
+    
+}
+function pay() {
+    hide(payment_dialog);
+    alert("Your Payment was successful")
+    
+}
 
-// function totalCurrency(carts){
-//     // let cartss = JSON.parse(localStorage.getItem("carts"));
-//     console.log(carts);
-//     // console.log(cartss)
-// }
+
+let btnOder = document.querySelector("#check-add");
+
 //=======================================fuction get value form local storage=========================
 
 displayCart()
-// console.log("🚀 ~ file: cart.js:97 ~ displayCart()", displayCart())
-// saveProduct()
-
-// console.log sort cut crt+alt +"l"
-
-array = [2,3,4,6]
-let sum = 0
-// for(let i=0; i<array.length; i++){
-//     sum = sum + array[i]
-//     console.log(array[i])
-// }
-
-for(let value of array){
-    sum  += value
-}
-console.log(sum)

@@ -21,15 +21,18 @@ let listOfProducts = [] // store the list of products
 //     img: "https://m.media-amazon.com/images/I/31zUXtO55tL._AC_SY1000_.jpg", name: "laptop", price: "$200" ,describe : "black"
 //   }
 // ]
-let carts=[]; /// for push value to local storage
+let carts = []; /// for push cart  value form costomer page to local storage
+
+// for push cart value form costomer page to local storage
 //=======================================fuction save in local stroage===================
-function saveItem(key, value) {
-  console.log(value)
+function saveItem(key, value) { // key name carts and value of carts
+  // console.log(key)
   localStorage.setItem(key, JSON.stringify(value));
 }
 //=======================================fuction get value form local storage=========================
-function loadItem(storage,key) {
-  let itmes = JSON.parse(localStorage.getItem(key));
+function loadItem(key,storage) { // storage for storage in carts
+  console.log(key)
+  let itmes = JSON.parse(localStorage.getItem(storage));
   if (itmes !== null) {
     return  itmes;
   }  
@@ -62,6 +65,7 @@ function hideCreateButton(){
 function getUserData(event){ /// for user click on add to cart and get value to localStorage
   let newcart={};
   let index = event.target.dataset.index;
+  // console.log(index);
     carts  = loadItem(carts,"carts");
     newcart = listOfProducts[index];
     newcart.qty  = 1
@@ -70,6 +74,8 @@ function getUserData(event){ /// for user click on add to cart and get value to 
     saveItem("carts", carts);
 
 }
+
+
 //=======================================get value of Product========================
   function displayProducts() {
     // console.log()
@@ -89,8 +95,12 @@ function getUserData(event){ /// for user click on add to cart and get value to 
 
       let proImg = document.createElement("img");
       proImg.src = listOfProduct.img;
+      card_img.dataset.index = index;
 
       card_img.appendChild(proImg);
+      //set dataset on img
+      // console.log(card_img)
+      card_img.addEventListener("click", detailsProduct);
 
       // console.log(card_img)
 
@@ -108,7 +118,7 @@ function getUserData(event){ /// for user click on add to cart and get value to 
       productPrice.appendChild(paragraphPrice);
 
       let currency = listOfProduct.currency;
-      console.log(listOfProduct)
+      // console.log(listOfProduct)
       if(currency !== "៛"){
         paragraphPrice.textContent = currency + listOfProduct.usd;
       }
@@ -173,6 +183,76 @@ function showButtonRegister(){
   optionLogin.textContent = "or sign up with";
   passwordLabel.textContent = "Remember your password";
   passwordLabel.style.color = "black"
+}
+
+////=============================// details //==========================================
+function detailsProduct(event) {
+  
+  let prodcutDetails = JSON.parse(localStorage.getItem("products"));// get value form localStorage getItem
+  let index = event.target.parentElement.dataset.index;
+  // console.log(index);
+  
+  
+  let prodcutDetail = prodcutDetails[index];
+  console.log(prodcutDetail);
+  
+  
+  let dom_details_dialog = document.querySelector(".detail-ofproduct");
+  console.log(dom_details_dialog);
+  
+  let details = document.createElement("div");
+  details.classList.add("details");
+  
+  let card_delails = document.createElement("div");
+  card_delails.classList.add("card-delails");
+  
+  let delails_img = document.createElement("div");
+  delails_img.classList.add("delails-img");
+
+  let img = document.createElement("img");
+  img.src = prodcutDetail.img;
+
+  let describe = document.createElement("div");
+  describe.classList.add("descript");
+
+  let name_prodcut = document.createElement("div");
+  name_prodcut.classList.add("name-prodcut");
+  let h2 = document.createElement("h2");
+  h2.textContent = prodcutDetail.name;
+  name_prodcut.appendChild(h2);
+  
+  let description = document.createElement("div");
+  description.classList.add("description");
+  let p = document.createElement("p");
+  p.textContent = prodcutDetail.describe;
+  description.appendChild(p);
+  
+  let price = document.createElement("div");
+  price.classList.add("price");
+  let riel = document.createElement("h2");
+  riel.textContent = prodcutDetail.riel+"៛";
+  let usd = document.createElement("h2");
+  usd.textContent ="$"+ prodcutDetail.usd;
+  price.appendChild(riel);
+  price.appendChild(usd);
+  // console.log(h1);
+
+
+  delails_img.appendChild(img);
+ 
+
+  describe.appendChild(name_prodcut);
+  describe.appendChild(description);
+  describe.appendChild(price);
+
+  card_delails.appendChild(delails_img);
+  card_delails.appendChild(describe);
+
+
+  details.appendChild(card_delails);
+
+  dom_details_dialog.appendChild(details);
+
 }
   //=======================================dropdown function========================
 
