@@ -4,23 +4,6 @@ const productContainer = document.querySelector(".card-container");
 const dom_product_dialog = document.querySelector("#product-dialog"); 
 // =======================================array object==========================
 let listOfProducts = [] // store the list of products
-// let listOfProducts = [
-//   {
-//     img: "https://store.storeimages.cdn-apple.com/4982/as-images.apple.com/is/refurb-macbook-air-space-gray-m1-202010?wid=539&hei=312&fmt=jpeg&qlt=95&.v=1634145627000", name: "laptop", price: "$100" ,describe : "black"
-//   },
-//   {
-//     img: "https://pisces.bbystatic.com/image2/BestBuy_US/images/products/6450/6450854_sd.jpg", name: "laptop", price: "$300" ,describe : "black"
-//   },
-//   {
-//     img: "https://m.media-amazon.com/images/I/31zUXtO55tL._AC_SY1000_.jpg", name: "laptop", price: "$200" ,describe : "black"
-//   },
-//   {
-//     img: "https://m.media-amazon.com/images/I/31zUXtO55tL._AC_SY1000_.jpg", name: "laptop", price: "$200" ,describe : "black"
-//   },
-//     {
-//     img: "https://m.media-amazon.com/images/I/31zUXtO55tL._AC_SY1000_.jpg", name: "laptop", price: "$200" ,describe : "black"
-//   }
-// ]
 let carts = []; /// for push cart  value form costomer page to local storage
 
 // for push cart value form costomer page to local storage
