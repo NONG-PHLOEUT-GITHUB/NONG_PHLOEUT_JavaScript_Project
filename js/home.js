@@ -358,7 +358,6 @@ let paraPrice = cardOfProduct[1];
 
 
 listOfProducts = loadItem(listOfProducts,"products");
-carts = loadItem(carts,"carts");
 
 displayProducts();
 
