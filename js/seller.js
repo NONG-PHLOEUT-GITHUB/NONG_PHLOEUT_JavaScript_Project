@@ -279,6 +279,7 @@ function calculatePrice(value){
   }
   else{
     document.querySelector("#price-value-riel").value = priceInUSD*money_exchange;
+   
   }
 }
 

@@ -107,17 +107,12 @@ function displayCart(){
 
         // get key value for currency riel
         totalPriceRiel += parseInt(addToCart.riel);// form riel currency
-        totalPriceUSD += parseInt( addToCart.usd);// form riel currency
+        totalPriceUSD += parseInt(addToCart.usd);// form riel currency
     }  
      let total = document.getElementById("total-usd");
     total.textContent = "$"+totalPriceUSD ;
     let totalRiel = document.getElementById("total-riel");
-    totalRiel.textContent =  totalPriceRiel + "៛" ;
-
-    // console.log(totalPriceRiel);
-    // console.log(totalPriceUSD);
-    // let getValue = document.getElementById("input-qty");
-    // console.log(getValue.value);
+    totalRiel.textContent =  totalPriceRiel + "៛";
 }
 
 //=======================================fuction remove=========================

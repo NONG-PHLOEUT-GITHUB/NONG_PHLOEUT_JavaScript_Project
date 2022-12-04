@@ -69,6 +69,7 @@
 }
 .nav-container #navigation .login {
   display: flex;
+  width: 30%;
 }
 .nav-container #navigation .login ul,
 .nav-container #navigation .login li {
@@ -491,15 +492,14 @@ select {
   display: flex;
   flex-direction: column;
 }
-.details .card-delails .descript .name-prodcut, .details .card-delails .descript .price, .details .card-delails .descript .description {
-  background: rgb(110, 60, 60);
+.details .card-delails .descript .name-prodcut, .details .card-delails .descript .back, .details .card-delails .descript .stars, .details .card-delails .descript .price, .details .card-delails .descript .description {
+  padding: 20px;
   flex: 1;
 }
-.details .card-delails .descript .description {
-  background: rgb(189, 158, 158);
-}
-.details .card-delails .descript .price {
-  background: rgb(161, 115, 115);
+.details .card-delails .descript .back {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 body {
@@ -540,4 +540,16 @@ body {
 
 dialog {
   width: 25%;
+}
+
+ul {
+  width: 150%;
+}
+
+#btn-card {
+  width: 80%;
+}
+#btn-card #qty {
+  font-size: 20px;
+  font-weight: bold;
 }/*# sourceMappingURL=home.css.map */

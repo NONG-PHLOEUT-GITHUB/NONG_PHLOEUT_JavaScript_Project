@@ -332,6 +332,7 @@ select {
 }
 .nav-container #navigation .login {
   display: flex;
+  width: 30%;
 }
 .nav-container #navigation .login ul,
 .nav-container #navigation .login li {

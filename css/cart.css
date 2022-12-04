@@ -67,7 +67,6 @@
   display: flex;
   align-self: flex-end;
   justify-content: flex-end;
-  background: #000;
 }
 .cart-total .shop-storage .card-product .check-cancel #remove {
   width: 50%;
@@ -145,6 +144,7 @@
 }
 .nav-container #navigation .login {
   display: flex;
+  width: 30%;
 }
 .nav-container #navigation .login ul,
 .nav-container #navigation .login li {
