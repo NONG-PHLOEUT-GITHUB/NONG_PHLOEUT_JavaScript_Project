@@ -50,9 +50,9 @@ function getUserData(event){ /// for user click on add to cart and get value to 
   let newcart={};
   let index = event.target.dataset.index;
 
-    // carts  = loadItem(carts,"carts");
+    carts  = loadItem("carts",carts);
     newcart = listOfProducts[index];
-    newcart.qty  = 1
+    newcart.qty  = 1;
     carts.push(newcart);  // push new cart to list of cart products
     saveItem("carts", carts);
 
