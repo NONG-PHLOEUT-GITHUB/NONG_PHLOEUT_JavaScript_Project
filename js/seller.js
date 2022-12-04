@@ -10,17 +10,20 @@ let buttonCancle =document.getElementById("btn-cancel");
 let formTitle = document.getElementById("titleOfForm");
 //=======================================fuction arrayobject=========================
 
-// let listOfProducts = [
-//   {
-//     img: "https://m.media-amazon.com/images/I/31zUXtO55tL._AC_SY1000_.jpg", name: "laptop", price: "$100" ,currency:"$",describe : "black"
-//   },
-//   {
-//     img: "https://m.media-amazon.com/images/I/31zUXtO55tL._AC_SY1000_.jpg", name: "laptop", price: "$300" ,currency:"$",describe : "black"
-//   },
-//   {
-//     img: "https://m.media-amazon.com/images/I/31zUXtO55tL._AC_SY1000_.jpg", name: "laptop", price: "$200" ,currency:"$",describe : "black"
-//   }
-// ]
+let listOfProducts = [
+  {
+    img: "https://m.media-amazon.com/images/I/31zUXtO55tL._AC_SY1000_.jpg", name: "Macbook Air M2", price: "$100" ,currency:"$",describe : "black"
+    ,riel: "2000000",usd: "2000"
+  },
+  {
+    img: "https://m.media-amazon.com/images/I/31zUXtO55tL._AC_SY1000_.jpg", name: "Macbook Air M1", price: "$300" ,currency:"$",describe : "black"
+    ,riel: "2000000",usd: "2000"
+  },
+  {
+    img: "https://m.media-amazon.com/images/I/31zUXtO55tL._AC_SY1000_.jpg", name: "Macbook pro 16 ", price: "$200" ,currency:"$",describe : "black"
+    ,riel: "2000000",usd: "2000"
+  }
+]
 
 //=======================================fuction save in local stroage===================
 function saveProduct() {
