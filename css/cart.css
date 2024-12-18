@@ -1,7 +1,6 @@
 #shop-title {
   margin-left: 50px;
   flex: 2;
-  align-self: center;
 }
 
 .cart-total {
@@ -392,6 +391,10 @@ input {
   margin-bottom: 0.5rem;
   border-radius: 10px;
   padding: 5px;
+}
+
+::-moz-placeholder {
+  font-size: 15px;
 }
 
 ::placeholder {

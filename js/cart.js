@@ -27,6 +27,8 @@ let totalPriceRiel = 0 ;
 let totalPriceUSD = 0 ;
 // //=======================================fuction get value form local storage=========================
 function displayCart(){
+    // Clear existing products from the container
+    shopStorages.innerHTML = "";
     // totalPrice = 0
     for(let index = 0; index <carts.length ; index++) {
         let addToCart = carts[index];

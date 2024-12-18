@@ -423,6 +423,10 @@ input {
   padding: 5px;
 }
 
+::-moz-placeholder {
+  font-size: 15px;
+}
+
 ::placeholder {
   font-size: 15px;
 }
@@ -522,6 +526,9 @@ body {
 }
 #product-dialog section input {
   padding: 5px;
+}
+#product-dialog section ::-moz-placeholder {
+  font-size: 15px;
 }
 #product-dialog section ::placeholder {
   font-size: 15px;
